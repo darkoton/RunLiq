@@ -1,21 +1,40 @@
 <template>
-  <button class="button" :class="[type]">
+  <button
+    class="button"
+    :class="[type, { clickActive }]"
+    :style="{ 'border-color': borderColor }"
+    @click="click"
+  >
     <component :is="icon" class="icon"></component><slot></slot>
   </button>
 </template>
 
-<script setup lang="ts">
-import { defineProps } from "vue";
+<script setup>
+import { defineProps, ref } from "vue";
 
 defineProps({
   type: {
     type: String,
     default: "default",
   },
+  borderColor: {
+    type: String,
+    default: "#ccc",
+  },
   icon: {
     default: "",
   },
 });
+
+const clickActive = ref(false);
+
+function click() {
+  clickActive.value = true;
+
+  setTimeout(() => {
+    clickActive.value = false;
+  }, 200);
+}
 </script>
 
 <style scoped lang="scss">
@@ -23,13 +42,18 @@ defineProps({
   padding: 8px 12px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  background: transparent;
+  transition: all 0.3s ease 0s;
   @media (any-hover: hover) {
     cursor: pointer;
-    transition: all 0.3s ease 0s;
     &:hover {
       color: #4096ff;
       border-color: #4096ff;
     }
+  }
+
+  &.clickActive {
+    box-shadow: 0 0 0 5px rgba(64, 150, 255, 0.3);
   }
 
   .icon {
@@ -42,7 +66,6 @@ defineProps({
     color: #ffff;
     @media (any-hover: hover) {
       cursor: pointer;
-      transition: all 0.3s ease 0s;
       &:hover {
         background-color: rgba(66, 151, 255, 0.8);
       }
@@ -50,13 +73,13 @@ defineProps({
   }
 
   &.dashed {
-    border: 1px dashed #ccc;
-
+    border-width: 1px;
+    border-style: dashed;
+    border-color: #ccc;
     @media (any-hover: hover) {
       cursor: pointer;
-      transition: all 0.3s ease 0s;
       &:hover {
-        border-color: rgba(66, 151, 255, 0.8);
+        opacity: 0.8;
       }
     }
   }
