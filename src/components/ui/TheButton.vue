@@ -33,7 +33,7 @@ function click() {
 
   setTimeout(() => {
     clickActive.value = false;
-  }, 200);
+  }, 250);
 }
 </script>
 
@@ -41,7 +41,7 @@ function click() {
 .button {
   padding: 8px 12px;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 12px;
   background: transparent;
   transition: all 0.3s ease 0s;
   @media (any-hover: hover) {
@@ -57,7 +57,7 @@ function click() {
   }
 
   .icon {
-    margin-right: 5px;
+    @include adaptiv-value(margin-right, 10, 5, 1);
   }
 
   &.primary {

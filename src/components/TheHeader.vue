@@ -12,12 +12,12 @@
             <div class="header__burger" @click="burger = true">
               <span></span><span></span><span></span>
             </div>
-            <div class="header__logo">
+            <router-link :to="'/'" class="header__logo">
               <span class="header__logo-icon">
                 <img src="@/assets/img/header/logo.svg" alt="" />
               </span>
               <span class="header__logo-text">RunLiq.com</span>
-            </div>
+            </router-link>
           </div>
           <div class="header__right">
             <nav class="header__nav">
@@ -203,7 +203,6 @@ const burger = ref(false);
     padding: 4px 15px;
     @include adaptiv-font(14, 11);
     @include adaptiv-line-height(22, 18);
-    border-radius: 12px;
     color: #096dd9;
   }
   &__google-auth {
@@ -243,7 +242,7 @@ const burger = ref(false);
     @include adaptiv-padding(20, 10, 20, 10, 1);
     z-index: 10;
     height: 100%;
-    transition: all 0.3s ease 0s;
+    transition: all 0.5s ease 0s;
     box-shadow: 0px 0 3px 1px #ccc;
     border-radius: 0 5px 5px 0;
 
