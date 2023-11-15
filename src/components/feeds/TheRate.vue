@@ -2,10 +2,10 @@
   <section class="feed">
     <div class="feed__wrapper">
       <div class="feed__body">
-        <h2 class="feed__title"># Top Creations # <span>this week</span></h2>
+        <h2 class="feed__title">Rate other’s works</h2>
 
         <ul class="feed__list">
-          <TheCard v-for="art in arts" :key="art" :data="art" type="top" />
+          <TheCard v-for="art in arts" :key="art" :data="art" />
         </ul>
       </div>
     </div>
@@ -29,11 +29,6 @@ const arts = ref([
   },
   {
     url: "./test arts/photo_2023-09-27_15-15-32.jpg",
-    likes: 141,
-    comments: 46,
-  },
-  {
-    url: "./test arts/photo_2021-08-15_12-17-20.jpg",
     likes: 141,
     comments: 46,
   },

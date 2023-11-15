@@ -4,7 +4,7 @@
       <div class="card__img">
         <img :src="data.url" alt="art" />
       </div>
-      <div class="card__rating-panel rating-panel">
+      <div class="card__rating-panel rating-panel" v-if="type == 'rating'">
         <span class="rating-panel__item rating-panel__comments">
           <MessageOutlined />
           <span class="comments-count">{{ data.comments }}</span>
@@ -15,13 +15,23 @@
           <span class="likes-count">{{ data.likes }}</span>
         </span>
       </div>
+
+      <div class="card__rate-panel rate-panel">
+        <button class="rate-panel__like"><LikeOutlined /></button>
+        <button class="rate-panel__dislike"><DislikeOutlined /></button>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { defineProps } from "vue";
-import { MessageOutlined, LikeFilled } from "@ant-design/icons-vue";
+import {
+  MessageOutlined,
+  LikeFilled,
+  LikeOutlined,
+  DislikeOutlined,
+} from "@ant-design/icons-vue";
 
 defineProps({
   data: {
@@ -29,6 +39,10 @@ defineProps({
     default: () => {
       return {};
     },
+  },
+  type: {
+    type: String,
+    default: "top",
   },
 });
 </script>
@@ -100,6 +114,42 @@ defineProps({
   @media only screen and (hover: none) {
     & .rating-panel {
       bottom: -1px;
+    }
+  }
+
+  & .rate-panel {
+    display: flex;
+    justify-content: space-between;
+    @include adaptiv-padding(11, 8, 40, 20, 1);
+    font-size: 23px;
+    color: $colorBlue;
+
+    &__like {
+      @media (any-hover: hover) {
+        cursor: pointer;
+        transition: all 0.3s ease 0s;
+        &:hover {
+          transform: translateY(-2px);
+        }
+      }
+
+      &:active {
+        color: rgb(16, 197, 16);
+      }
+    }
+
+    &__dislike {
+      @media (any-hover: hover) {
+        cursor: pointer;
+        transition: all 0.3s ease 0s;
+        &:hover {
+          transform: translateY(2px);
+        }
+      }
+
+      &:active {
+        color: rgb(197, 16, 16);
+      }
     }
   }
 }

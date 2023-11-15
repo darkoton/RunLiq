@@ -5,7 +5,7 @@
     :style="{ 'border-color': borderColor }"
     @click="click"
   >
-    <component :is="icon" class="icon"></component><slot></slot>
+    <component v-if="icon" :is="icon" class="icon"></component><slot></slot>
   </button>
 </template>
 
@@ -47,8 +47,8 @@ function click() {
   @media (any-hover: hover) {
     cursor: pointer;
     &:hover {
-      color: #4096ff;
-      border-color: #4096ff;
+      color: $colorBlue;
+      border-color: $colorBlue;
     }
   }
 
@@ -61,7 +61,7 @@ function click() {
   }
 
   &.primary {
-    background: #4096ff;
+    background: $colorBlue;
     border-width: 0;
     color: #ffff;
     @media (any-hover: hover) {
@@ -80,6 +80,8 @@ function click() {
       cursor: pointer;
       &:hover {
         opacity: 0.8;
+        color: $colorBlue;
+        border-color: $colorBlue !important;
       }
     }
   }

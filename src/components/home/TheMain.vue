@@ -8,14 +8,14 @@
           </h1>
 
           <div class="main__buttons">
-            <TheButton
-              type="dashed"
-              :icon="WechatOutlined"
-              class="main__discord"
-            >
+            <a-button type="dashed" class="main__discord">
+              <template #icon><WechatOutlined /></template>
               Discord
-            </TheButton>
-            <TheButton type="primary" :icon="RocketOutlined">Run Now</TheButton>
+            </a-button>
+            <a-button type="primary">
+              <template #icon><RocketOutlined /></template>
+              Run Now</a-button
+            >
           </div>
         </div>
       </div>
@@ -25,7 +25,6 @@
 
 <script setup lang="ts">
 import { RocketOutlined, WechatOutlined } from "@ant-design/icons-vue";
-import TheButton from "@/components/ui/TheButton.vue";
 </script>
 
 <style lang="scss" scoped>
@@ -58,11 +57,19 @@ import TheButton from "@/components/ui/TheButton.vue";
       font-size: 16px;
       @include adaptiv-font(16, 13);
       @include adaptiv-line-height(24, 18);
+      display: flex;
+      align-items: center;
+      border-radius: 12px;
     }
   }
   &__discord {
     color: $colorBlue;
-    border-color: $colorBlue !important;
+    border-color: $colorBlue;
+
+    &:active {
+      color: #096dd9;
+      border-color: #096dd9;
+    }
   }
 }
 </style>

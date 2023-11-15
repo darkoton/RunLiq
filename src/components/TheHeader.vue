@@ -22,30 +22,30 @@
           <div class="header__right">
             <nav class="header__nav">
               <router-link
-                to="#"
+                to="/run"
                 class="header__nav-link header__nav-item header__run"
               >
                 <RocketOutlined class="header__icon" />
                 <span>New Run</span>
               </router-link>
-              <router-link to="#" class="header__nav-link header__nav-item">
+              <router-link to="/" class="header__nav-link header__nav-item">
                 <HomeOutlined class="header__icon" />
                 <span>Home</span>
               </router-link>
-              <router-link to="#" class="header__nav-link header__nav-item">
+              <router-link
+                to="/gallery"
+                class="header__nav-link header__nav-item"
+              >
                 <FolderOpenOutlined class="header__icon" />
                 <span>Gallery</span>
               </router-link>
               <span class="header__nav-token header__nav-item">
                 <span>LC: 235</span>
               </span>
-              <TheButton
-                type="dashed"
-                :icon="UserOutlined"
-                border-color="#096dd9"
-                class="header__login"
-                >Login</TheButton
-              >
+              <a-button type="dashed" class="header__login">
+                <template #icon><UserOutlined /></template>
+                Login
+              </a-button>
             </nav>
 
             <button class="header__google-auth">
@@ -61,30 +61,36 @@
           </div>
 
           <router-link
-            to="#"
+            to="/run"
             class="header__nav-link header__nav-item header__run"
+            @click="burger = false"
           >
             <RocketOutlined class="header__icon" />
             <span>New Run</span>
           </router-link>
-          <router-link to="#" class="header__nav-link header__nav-item">
+          <router-link
+            to="/"
+            class="header__nav-link header__nav-item"
+            @click="burger = false"
+          >
             <HomeOutlined class="header__icon" />
             <span>Home</span>
           </router-link>
-          <router-link to="#" class="header__nav-link header__nav-item">
+          <router-link
+            to="/gallery"
+            class="header__nav-link header__nav-item"
+            @click="burger = false"
+          >
             <FolderOpenOutlined class="header__icon" />
             <span>Gallery</span>
           </router-link>
           <span class="header__nav-link header__nav-token header__nav-item">
             <span>LC: 235</span>
           </span>
-          <TheButton
-            type="dashed"
-            :icon="UserOutlined"
-            border-color="#096dd9"
-            class="header__login"
-            >Login</TheButton
-          >
+          <a-button type="dashed" class="header__login">
+            <template #icon><UserOutlined /></template>
+            Login
+          </a-button>
           <button class="header__google-auth">
             <img src="@/assets/img/header/google-logo.svg" alt="" />
             <span>Continue with Google account</span>
@@ -103,7 +109,7 @@ import {
   UserOutlined,
 } from "@ant-design/icons-vue";
 
-import TheButton from "@/components/ui/TheButton.vue";
+// import TheButton from "@/components/ui/TheButton.vue";
 import { ref } from "vue";
 
 const burger = ref(false);
@@ -187,6 +193,14 @@ const burger = ref(false);
           }
         }
       }
+
+      &.router-link-active {
+        color: #1890ff;
+
+        &:after {
+          width: 100%;
+        }
+      }
     }
 
     &-item {
@@ -203,7 +217,9 @@ const burger = ref(false);
     padding: 4px 15px;
     @include adaptiv-font(14, 11);
     @include adaptiv-line-height(22, 18);
-    color: #096dd9;
+    color: $colorBlue;
+    border-color: $colorBlue;
+    border-radius: 12px;
   }
   &__google-auth {
     display: flex;
@@ -287,6 +303,7 @@ const burger = ref(false);
     background-color: rgba(0, 0, 0, 0.5);
     transition: all 0.4s ease 0s;
     opacity: 0;
+    display: none;
 
     &.active {
       z-index: 10;
@@ -303,6 +320,9 @@ const burger = ref(false);
     }
     &__right {
       display: none;
+    }
+    &__backward {
+      display: block;
     }
   }
 }
