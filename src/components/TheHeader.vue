@@ -21,7 +21,7 @@
           </div>
           <div class="header__right">
             <nav class="header__nav">
-              <router-link
+              <!-- <router-link
                 to="/run"
                 class="header__nav-link header__nav-item header__run"
               >
@@ -38,7 +38,28 @@
               >
                 <FolderOpenOutlined class="header__icon" />
                 <span>Gallery</span>
-              </router-link>
+              </router-link> -->
+
+              <a-menu
+                v-model:selectedKeys="current"
+                mode="horizontal"
+                class="header__nav"
+              >
+                <a-menu-item
+                  v-for="item in menu"
+                  :key="item.key"
+                  @click="item.to"
+                >
+                  <template #icon>
+                    <component
+                      :is="item.icon"
+                      :style="{ color: item.iconColor }"
+                    ></component>
+                  </template>
+                  {{ item.title }}
+                </a-menu-item>
+              </a-menu>
+
               <span class="header__nav-token header__nav-item">
                 <span>LC: 235</span>
               </span>
@@ -60,7 +81,7 @@
             <span></span><span></span>
           </div>
 
-          <router-link
+          <!-- <router-link
             to="/run"
             class="header__nav-link header__nav-item header__run"
             @click="burger = false"
@@ -83,7 +104,29 @@
           >
             <FolderOpenOutlined class="header__icon" />
             <span>Gallery</span>
-          </router-link>
+          </router-link> -->
+          <a-menu
+            v-model:selectedKeys="current"
+            mode="vertical"
+            class="header__nav-mob"
+          >
+            <a-menu-item
+              v-for="item in menu"
+              :key="item.key"
+              @click="
+                item.to;
+                burger = false;
+              "
+            >
+              <template #icon>
+                <component
+                  :is="item.icon"
+                  :style="{ color: item.iconColor }"
+                ></component>
+              </template>
+              {{ item.title }}
+            </a-menu-item>
+          </a-menu>
           <span class="header__nav-link header__nav-token header__nav-item">
             <span>LC: 235</span>
           </span>
@@ -110,9 +153,48 @@ import {
 } from "@ant-design/icons-vue";
 
 // import TheButton from "@/components/ui/TheButton.vue";
-import { ref } from "vue";
+import { useRouter, useRoute } from "vue-router";
+import { ref, watch } from "vue";
+
+const route = useRoute();
+const router = useRouter();
 
 const burger = ref(false);
+
+const menu = ref([
+  {
+    title: "New Run",
+    key: "run",
+    icon: RocketOutlined,
+    to: () => router.push("/run"),
+    iconColor: "#1890FF",
+  },
+  {
+    title: "Home",
+    key: "home",
+    icon: HomeOutlined,
+    to: () => router.push("/"),
+  },
+  {
+    title: "Gallery",
+    key: "gallery",
+    icon: FolderOpenOutlined,
+    to: () => router.push("/gallery"),
+  },
+]);
+
+const current = ref([route.name ? route.name : ""]);
+
+watch(
+  () => route.name,
+  () => {
+    current.value = [
+      route.matched.length > 1
+        ? route.matched[route.matched.length - 2].name
+        : route.name,
+    ];
+  }
+);
 </script>
 
 <style lang="scss" scoped>
@@ -160,7 +242,8 @@ const burger = ref(false);
   &__nav {
     display: flex;
     align-items: center;
-    margin-bottom: 3px;
+    margin-bottom: 5px;
+    border: 0;
     &-link {
       display: flex;
       align-items: center;
@@ -207,7 +290,13 @@ const burger = ref(false);
       @include adaptiv-margin(0, 0, 15, 7.5, 1);
     }
   }
+  &__nav-mob {
+    border-right: 0;
+  }
 
+  & .header__nav-token {
+    // margin: 15px 0;
+  }
   &__run {
     & .header__icon {
       color: #1890ff;
