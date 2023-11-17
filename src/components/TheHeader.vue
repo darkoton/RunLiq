@@ -202,7 +202,7 @@ watch(
   &__body {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     @include adaptiv-padding(14, 7, 0, 0, 1);
   }
 
@@ -233,6 +233,7 @@ watch(
     color: #313e5a;
     font-family: Geometria;
     font-size: 22px;
+    padding: 3px 0;
   }
   &__right {
     display: flex;

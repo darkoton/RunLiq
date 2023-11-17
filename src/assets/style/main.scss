@@ -14,7 +14,8 @@ body {
   font-family: $fontFamily;
   color: $colorDark;
   font-size: 14px;
-
+  overflow-y: scroll;
+  @include scrollbars(5px, rgba($colorBlue, 0.5), transparent, 10px);
   // ._lock-scroll
   &._lock-scroll {
      overflow: hidden;

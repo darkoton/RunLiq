@@ -16,7 +16,7 @@
         </span>
       </div>
 
-      <div class="card__rate-panel rate-panel">
+      <div class="card__rate-panel rate-panel" v-if="type == 'rate'">
         <button class="rate-panel__like"><LikeOutlined /></button>
         <button class="rate-panel__dislike"><DislikeOutlined /></button>
       </div>

@@ -5,7 +5,7 @@
         <h2 class="feed__title"># Top Creations # <span>this week</span></h2>
 
         <ul class="feed__list">
-          <TheCard v-for="art in arts" :key="art" :data="art" type="top" />
+          <TheCard v-for="art in arts" :key="art" :data="art" type="rating" />
         </ul>
       </div>
     </div>

@@ -5,7 +5,7 @@
         <h2 class="feed__title">Rate other’s works</h2>
 
         <ul class="feed__list">
-          <TheCard v-for="art in arts" :key="art" :data="art" />
+          <TheCard v-for="art in arts" :key="art" :data="art" type="rate" />
         </ul>
       </div>
     </div>
