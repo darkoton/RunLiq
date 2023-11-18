@@ -28,6 +28,8 @@
               </a-menu-item>
             </a-menu>
           </div>
+
+          <router-view></router-view>
         </div>
       </div>
     </div>

@@ -5,14 +5,10 @@ import router from './router' // router
 // import axios from './plugins/axios' //axios
 // import i18n from "@/locales/i18n-config"; //i18n localization
 import Ant from 'ant-design-vue';
-// import 'ant-design-vue/dist/reset.css';
 import 'ant-design-vue/dist/antd.css'; // or 'ant-design-vue/dist/antd.less'
-
 import "@/assets/style/main.scss"
 
-
 const app = createApp(App)
-
 app.use(Ant);
 app.use(router) // router
 // app.use(store) // vuex
