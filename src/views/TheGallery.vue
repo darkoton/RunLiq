@@ -109,9 +109,9 @@ const current = ref<string[]>([
 <style lang="scss" scoped>
 .gallery {
   &__body {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    // display: flex;
+    // flex-direction: column;
+    // align-items: flex-start;
   }
   &__categories {
     @include adaptiv-value(margin-top, 20, 10, 1);

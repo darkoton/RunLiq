@@ -81,6 +81,8 @@ async function divideByColumn(cols: number) {
       colCounter++;
     }
   }
+  console.log(result);
+
   columnsItems.value = result;
   return result;
 }
@@ -126,7 +128,7 @@ function masonryBreakpoints() {
   ) {
     columnsNumber.value--;
     masonryBreakpoints();
-    divideByColumn(columnsNumber.value);
+    return;
   } else {
     if (
       columnsNumber.value < props.columns &&
@@ -135,14 +137,13 @@ function masonryBreakpoints() {
           props.gap * (columnsNumber.value + 1)
     ) {
       columnsNumber.value++;
-      divideByColumn(columnsNumber.value);
     }
+    divideByColumn(columnsNumber.value);
   }
 }
 
 onMounted(() => {
   columnsNumber.value = props.columns;
-  divideByColumn(columnsNumber.value);
   masonryBreakpoints();
 
   window.addEventListener("resize", masonryBreakpoints);

@@ -114,7 +114,7 @@
               v-for="item in menu"
               :key="item.key"
               @click="
-                item.to;
+                item.to();
                 burger = false;
               "
             >
