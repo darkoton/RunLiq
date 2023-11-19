@@ -14,7 +14,7 @@
         maxWidth: columnsWidth + 'px',
         gap: gap + 'px',
       }"
-      v-for="column in columns"
+      v-for="column in columnsNumber"
       :key="column"
     >
       <div
@@ -31,7 +31,7 @@
 
 
 <script setup lang="ts">
-import { defineProps, onMounted, ref } from "vue";
+import { defineProps, onMounted, ref, onBeforeUnmount } from "vue";
 
 const props = defineProps({
   items: {
@@ -52,15 +52,14 @@ const props = defineProps({
   },
 });
 
-// const columnsNumber = ref<number>(1);
+const columnsNumber = ref<number>(1);
 const columnsItems = ref<any>([]);
-// const windowWidth = ref(1920);
 // делим масив на масив из колонок
-async function divideByColumn() {
+async function divideByColumn(cols: number) {
   let colCounter = 0;
   const result = [];
 
-  for (let i = 0; i < props.columns; i++) {
+  for (let i = 0; i < cols; i++) {
     if (!result[i]) {
       result[i] = [];
     } else {
@@ -76,7 +75,7 @@ async function divideByColumn() {
 
     result[minCol].push(props.items[index]);
 
-    if (colCounter == props.columns - 1) {
+    if (colCounter == cols - 1) {
       colCounter = 0;
     } else {
       colCounter++;
@@ -118,20 +117,39 @@ function loadImage(url) {
   });
 }
 
-divideByColumn();
+function masonryBreakpoints() {
+  if (
+    window.innerWidth <
+    props.columnsWidth * columnsNumber.value +
+      props.gap * (columnsNumber.value - 1) -
+      100
+  ) {
+    columnsNumber.value--;
+    masonryBreakpoints();
+    divideByColumn(columnsNumber.value);
+  } else {
+    if (
+      columnsNumber.value < props.columns &&
+      window.innerWidth >
+        props.columnsWidth * columnsNumber.value +
+          props.gap * (columnsNumber.value + 1)
+    ) {
+      columnsNumber.value++;
+      divideByColumn(columnsNumber.value);
+    }
+  }
+}
 
 onMounted(() => {
-  // columnsNumber.value = props.columns;
-  // windowWidth.value = window.innerWidth;
-  // window.addEventListener("resize", () => {
-  //   windowWidth.value = window.innerWidth;
-  //   if (
-  //     windowWidth.value - 30 <
-  //     props.columnsWidth * props.columns + props.gap * props.columns - 1
-  //   ) {
-  //     columnsNumber.value--;
-  //   }
-  // });
+  columnsNumber.value = props.columns;
+  divideByColumn(columnsNumber.value);
+  masonryBreakpoints();
+
+  window.addEventListener("resize", masonryBreakpoints);
+});
+
+onBeforeUnmount(() => {
+  window.removeEventListener("resize", masonryBreakpoints);
 });
 </script>
 

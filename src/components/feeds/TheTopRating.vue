@@ -28,7 +28,7 @@ const arts = ref([
     comments: 46,
   },
   {
-    url: "./test arts/photo_2023-09-27_15-15-32.jpg",
+    url: "./test arts/saitama.jpg",
     likes: 141,
     comments: 46,
   },
