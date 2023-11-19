@@ -124,6 +124,15 @@ defineProps({
     font-size: 23px;
     color: $colorBlue;
 
+    &__like,
+    &__dislike {
+      background-color: transparent;
+
+      span {
+        background-color: transparent;
+      }
+    }
+
     &__like {
       @media (any-hover: hover) {
         cursor: pointer;

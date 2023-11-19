@@ -8,11 +8,11 @@
           </h1>
 
           <div class="main__buttons">
-            <a-button type="dashed" class="main__discord">
+            <a-button type="dashed" class="main__discord" size="large">
               <template #icon><WechatOutlined /></template>
               Discord
             </a-button>
-            <a-button type="primary">
+            <a-button type="primary" size="large">
               <template #icon><RocketOutlined /></template>
               Run Now</a-button
             >

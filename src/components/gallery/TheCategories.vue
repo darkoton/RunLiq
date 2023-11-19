@@ -8,6 +8,7 @@
       <a-button
         :type="route.query.filtred != category.title ? 'dashed' : 'primary'"
         class="categories__category"
+        size="small"
       >
         {{ category.title }}
       </a-button>
