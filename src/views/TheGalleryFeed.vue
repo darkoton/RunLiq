@@ -31,6 +31,17 @@
 
               <div class="post__img">
                 <img :src="item.url" alt="" />
+
+                <div class="post__counters">
+                  <span class="post__likes post__counter"
+                    ><LikeOutlined class="post__counter-icon" />
+                    <span class="post__counter-value">{{ item.likes }}</span>
+                  </span>
+                  <span class="post__comments post__counter">
+                    <MessageOutlined class="post__counter-icon" />
+                    <span class="post__counter-value">{{ item.comments }}</span>
+                  </span>
+                </div>
               </div>
             </article>
           </template>
@@ -42,10 +53,12 @@
 
 <script setup lang="ts">
 import TheMasonry from "@/components/ui/TheMasonry.vue";
-
+import { LikeOutlined, MessageOutlined } from "@ant-design/icons-vue";
 const items = [
   {
     title: "test 1",
+    comments: 314,
+    likes: 143,
     user: {
       name: "Mister German",
       avatar: "/avatar.png",
@@ -55,6 +68,8 @@ const items = [
   },
   {
     title: "test 2",
+    comments: 314,
+    likes: 143,
     user: {
       name: "Mister German",
       avatar: "/avatar.png",
@@ -64,6 +79,8 @@ const items = [
   },
   {
     title: "test 3",
+    comments: 314,
+    likes: 143,
     user: {
       name: "Mister German",
       avatar: "/avatar.png",
@@ -73,6 +90,8 @@ const items = [
   },
   {
     title: "test 4",
+    comments: 314,
+    likes: 143,
     user: {
       name: "Mister German",
       avatar: "/avatar.png",
@@ -82,6 +101,8 @@ const items = [
   },
   {
     title: "test 5",
+    comments: 314,
+    likes: 143,
     user: {
       name: "Mister German",
       avatar: "/avatar.png",
@@ -91,6 +112,8 @@ const items = [
   },
   {
     title: "test 7",
+    comments: 314,
+    likes: 143,
     user: {
       name: "Mister German",
       avatar: "/avatar.png",
@@ -100,6 +123,8 @@ const items = [
   },
   {
     title: "test 6",
+    comments: 314,
+    likes: 143,
     user: {
       name: "Mister German",
       avatar: "/avatar.png",
@@ -187,9 +212,45 @@ function dynamicDate(date: any) {
     &__img {
       border-radius: 12px;
       overflow: hidden;
+      position: relative;
+
       img {
         width: 100%;
       }
+    }
+
+    &__counters {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      border-radius: 12px;
+      border: 0px solid #e1e1e1;
+      background: rgba(0, 0, 0, 0.5);
+      box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.05);
+      backdrop-filter: blur(2px);
+      color: #fff;
+      @include adaptiv-padding(7, 3.5, 15, 8.5, 1);
+      @include adaptiv-value(column-gap, 20, 8, 1);
+      display: flex;
+    }
+    &__counter {
+      display: flex;
+      align-items: center;
+      @media (any-hover: hover) {
+        cursor: pointer;
+        transition: all 0.3s ease 0s;
+        &:hover {
+          color: $colorBlue;
+        }
+      }
+    }
+    &__counter-icon {
+      margin-right: 9px;
+      @include adaptiv-font(18, 15);
+    }
+    &__counter-value {
+      @include adaptiv-font(14, 10);
+      line-height: 18px;
     }
   }
 }

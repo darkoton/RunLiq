@@ -7,7 +7,7 @@
             class="gallery__categories"
             :categories="categoriesList"
           />
-          <div class="gallert__sort">
+          <div class="gallery__sort">
             <a-menu
               v-model:selectedKeys="current"
               mode="horizontal"
@@ -118,6 +118,8 @@ const current = ref<string[]>([
   }
   &__sort {
     @include adaptiv-value(margin-bottom, 24, 15, 1);
+    width: 100%;
+    max-width: 432px;
   }
 }
 </style>

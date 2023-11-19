@@ -40,7 +40,7 @@ defineProps({
     display: flex;
     align-items: center;
 
-    &[type="dashed"] {
+    &.ant-btn-dashed {
       border-color: $colorBlue;
       color: $colorBlue;
     }
