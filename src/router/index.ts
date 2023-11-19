@@ -27,6 +27,11 @@ const routes = [
     ],
   },
   {
+    path: '/privacy-policy',
+    name: 'privacy policy',
+    component: () => import(/* webpackChunkName: "about" */ '@/views/ThePrivacyPolicy.vue'),
+  },
+  {
     path: "/:pathMatch(.*)",
     component: () => import(/* webpackChunkName: "about" */ '@/views/TheNotFound.vue')
   }
