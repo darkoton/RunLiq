@@ -84,8 +84,7 @@ const menu = ref([
   {
     title: "Daily Ranking",
     icon: AntDesignOutlined,
-    to: () =>
-      router.push({ path: "/gallery/daily-ranking", query: route.query }),
+    to: () => router.push({ path: "/gallery/daily", query: route.query }),
   },
   {
     title: "Newest",
@@ -95,8 +94,7 @@ const menu = ref([
   {
     title: "Most Reactions",
     icon: FireOutlined,
-    to: () =>
-      router.push({ path: "/gallery/most-reactions", query: route.query }),
+    to: () => router.push({ path: "/gallery/reactions", query: route.query }),
     iconColor: "#FA541C",
   },
 ]);

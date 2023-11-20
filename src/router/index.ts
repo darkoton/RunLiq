@@ -7,8 +7,8 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '@/views/TheHome.vue')
   },
   {
-    path: '/run',
-    name: 'run',
+    path: '/make',
+    name: 'make',
     component: () => import(/* webpackChunkName: "about" */ '@/views/TheRun.vue')
   },
   {
