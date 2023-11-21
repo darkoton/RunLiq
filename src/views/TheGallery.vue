@@ -106,18 +106,17 @@ const current = ref<string[]>([
 
 <style lang="scss" scoped>
 .gallery {
-  &__body {
-    // display: flex;
-    // flex-direction: column;
-    // align-items: flex-start;
-  }
   &__categories {
     @include adaptiv-value(margin-top, 20, 10, 1);
   }
   &__sort {
     @include adaptiv-value(margin-bottom, 24, 15, 1);
-    width: 100%;
-    max-width: 432px;
+    // width: 100%;
+    // max-width: 432px;
+
+    @media (min-width: 600px){
+     display: flex;
+    }
   }
 }
 </style>
