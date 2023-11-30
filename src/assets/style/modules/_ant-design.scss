@@ -1,0 +1,11 @@
+.ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu{
+  // @include adaptiv-padding(0, 0, 20, 10, 1);
+}
+
+.ant-dropdown-menu{
+  padding: 0;
+}
+.ant-dropdown-menu-item:hover, .ant-dropdown-menu-submenu-title:hover{
+  background-color: #E6F7FF;
+  color: $colorBlue;
+}

@@ -21,29 +21,10 @@
           </div>
           <div class="header__right">
             <nav class="header__nav">
-              <!-- <router-link
-                to="/run"
-                class="header__nav-link header__nav-item header__run"
-              >
-                <RocketOutlined class="header__icon" />
-                <span>New Run</span>
-              </router-link>
-              <router-link to="/" class="header__nav-link header__nav-item">
-                <HomeOutlined class="header__icon" />
-                <span>Home</span>
-              </router-link>
-              <router-link
-                to="/gallery"
-                class="header__nav-link header__nav-item"
-              >
-                <FolderOpenOutlined class="header__icon" />
-                <span>Gallery</span>
-              </router-link> -->
-
               <a-menu
                 v-model:selectedKeys="current"
                 mode="horizontal"
-                class="header__nav"
+                class="header__nav-menu"
               >
                 <a-menu-item
                   v-for="item in menu"
@@ -63,13 +44,20 @@
               <span class="header__nav-token header__nav-item">
                 <span>LC: 235</span>
               </span>
-              <a-button type="dashed" class="header__login">
+              <a-button
+                type="dashed"
+                class="header__login"
+                v-if="!isAuth"
+                @click="isAuth = true"
+              >
                 <template #icon><UserOutlined /></template>
                 Login
               </a-button>
+
+              <user-menu v-else @logOut="isAuth = false" />
             </nav>
 
-            <button class="header__google-auth">
+            <button class="header__google-auth" v-if="!isAuth">
               <img src="@/assets/img/header/google-logo.svg" alt="" />
               <span>Continue with Google account</span>
             </button>
@@ -81,30 +69,6 @@
             <span></span><span></span>
           </div>
 
-          <!-- <router-link
-            to="/run"
-            class="header__nav-link header__nav-item header__run"
-            @click="burger = false"
-          >
-            <RocketOutlined class="header__icon" />
-            <span>New Run</span>
-          </router-link>
-          <router-link
-            to="/"
-            class="header__nav-link header__nav-item"
-            @click="burger = false"
-          >
-            <HomeOutlined class="header__icon" />
-            <span>Home</span>
-          </router-link>
-          <router-link
-            to="/gallery"
-            class="header__nav-link header__nav-item"
-            @click="burger = false"
-          >
-            <FolderOpenOutlined class="header__icon" />
-            <span>Gallery</span>
-          </router-link> -->
           <a-menu
             v-model:selectedKeys="current"
             mode="vertical"
@@ -130,14 +94,21 @@
           <span class="header__nav-link header__nav-token header__nav-item">
             <span>LC: 235</span>
           </span>
-          <a-button type="dashed" class="header__login">
-            <template #icon><UserOutlined /></template>
-            Login
-          </a-button>
-          <button class="header__google-auth">
-            <img src="@/assets/img/header/google-logo.svg" alt="" />
-            <span>Continue with Google account</span>
-          </button>
+          <div class="header__mob-user">
+            <a-button
+              type="dashed"
+              class="header__login"
+              v-if="!isAuth"
+              @click="isAuth = true"
+            >
+              <template #icon><UserOutlined /></template>
+              Login
+            </a-button>
+            <button class="header__google-auth" v-if="!isAuth">
+              <img src="@/assets/img/header/google-logo.svg" alt="" />
+              <span>Continue with Google account</span>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -152,7 +123,7 @@ import {
   UserOutlined,
 } from "@ant-design/icons-vue";
 
-// import TheButton from "@/components/ui/TheButton.vue";
+import UserMenu from "@/components/header/TheUserMenu.vue";
 import { useRouter, useRoute } from "vue-router";
 import { ref, watch } from "vue";
 
@@ -161,12 +132,14 @@ const router = useRouter();
 
 const burger = ref(false);
 
+const isAuth = ref(true);
+
 const menu = ref([
   {
     title: "New Run",
     key: "run",
     icon: RocketOutlined,
-    to: () => router.push("/run"),
+    to: () => router.push("/make"),
     iconColor: "#1890FF",
   },
   {
@@ -232,7 +205,7 @@ watch(
     @include adaptiv-value(column-gap, 8, 4, 1);
     color: #313e5a;
     font-family: Geometria;
-    font-size: 22px;
+    @include adaptiv-font(22, 16);
     padding: 3px 0;
   }
   &__right {
@@ -244,7 +217,7 @@ watch(
     display: flex;
     align-items: center;
     margin-bottom: 5px;
-    border: 0;
+
     &-link {
       display: flex;
       align-items: center;
@@ -289,6 +262,10 @@ watch(
 
     &-item {
       @include adaptiv-margin(0, 0, 15, 7.5, 1);
+    }
+
+    &-menu {
+      border: 0;
     }
   }
   &__nav-mob {
@@ -400,19 +377,49 @@ watch(
       opacity: 1;
     }
   }
-
-  @media screen and (max-width: 700px) {
+  &__mob-user {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    & button {
+      width: 100%;
+    }
+  }
+  @media screen and (max-width: 770px) {
     &__body-mob {
       display: flex;
     }
     &__burger {
       display: flex;
     }
-    &__right {
+    // &__right {
+    //   display: none;
+    // }
+    &__nav-menu {
       display: none;
     }
     &__backward {
       display: block;
+    }
+  }
+
+  @media (max-width: 480px) {
+    &__body {
+      align-items: center;
+      .header__google-auth {
+        display: none;
+      }
+    }
+    &__nav {
+      margin-bottom: 0;
+    }
+  }
+
+  @media (max-width: 430px) {
+    &__body {
+      .header__nav-token {
+        display: none;
+      }
     }
   }
 }

@@ -8,7 +8,10 @@
 // @import "./modules/_iconfonts";
 
 //< " ФАЙЛ С ОТДЕЛЬНЫМИ БЛОКАМИ " >=============================================================================================================>//
-// @import "./modules/_ui";
+@import "./modules/_ui";
+
+@import "./modules/_ant-design";
+
 
 body {
   font-family: $fontFamily;
