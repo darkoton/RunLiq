@@ -8,7 +8,7 @@ const NODE_ENV = process.env.NODE_ENV === 'development'
 module.exports = defineConfig({
   transpileDependencies: true,
   publicPath: process.env.NODE_ENV === 'production'
-    ? '/Runliq/' // project name
+    ? '/RunLiq/' // project name
     : '/',
   css: {
     extract: NODE_ENV === 'production',

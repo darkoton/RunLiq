@@ -53,8 +53,6 @@ import { RocketOutlined, WechatOutlined } from "@ant-design/icons-vue";
 
     button {
       padding: 6.4px 15px;
-      // @include adaptiv-padding(6.4, 4, 15, 10, 1);
-      font-size: 16px;
       @include adaptiv-font(16, 13);
       @include adaptiv-line-height(24, 18);
       display: flex;

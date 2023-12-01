@@ -1,12 +1,14 @@
 <template>
   <section class="feed">
     <div class="feed__wrapper">
-      <div class="feed__body">
-        <h2 class="feed__title"># Top Creations # <span>this week</span></h2>
+      <div class="feed__container _container">
+        <div class="feed__body">
+          <h2 class="feed__title">Top Creations <span>this week</span></h2>
 
-        <ul class="feed__list">
-          <TheCard v-for="art in arts" :key="art" :data="art" type="rating" />
-        </ul>
+          <ul class="feed__list">
+            <TheCard v-for="art in arts" :key="art" :data="art" type="rating" />
+          </ul>
+        </div>
       </div>
     </div>
   </section>
@@ -37,6 +39,26 @@ const arts = ref([
     likes: 141,
     comments: 46,
   },
+  {
+    url: "./test arts/red.jpg",
+    likes: 141,
+    comments: 46,
+  },
+  {
+    url: "./test arts/rage.png",
+    likes: 141,
+    comments: 46,
+  },
+  {
+    url: "./test arts/batman.png",
+    likes: 141,
+    comments: 46,
+  },
+  {
+    url: "./test arts/woman.png",
+    likes: 141,
+    comments: 46,
+  },
 ]);
 </script>
 
@@ -45,7 +67,7 @@ const arts = ref([
   &__body {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
   }
   &__title {
     color: $colorBlue;
@@ -54,7 +76,7 @@ const arts = ref([
     display: flex;
     align-items: flex-start;
     @include adaptiv-value(column-gap, 10, 6, 1);
-    @include adaptiv-value(margin-bottom, 30, 20, 1);
+    @include adaptiv-value(margin-bottom, 6, 3, 1);
 
     span {
       color: #bfbfbf;
@@ -68,6 +90,7 @@ const arts = ref([
     width: 100%;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 250px));
+    grid-template-rows: repeat(auto-fit, minmax(250px, 300px));
     justify-content: center;
     @include adaptiv-value(gap, 30, 20, 1);
   }
