@@ -15,7 +15,7 @@ const routes = [
     path: '/gallery',
     name: 'gallery',
     component: () => import(/* webpackChunkName: "about" */ '@/views/TheGallery.vue'),
-    redirect: "/gallery/daily-ranking",
+    redirect: "/gallery/daily",
     children: [
       {
         // UserProfile will be rendered inside User's <router-view>

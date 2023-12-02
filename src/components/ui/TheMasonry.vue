@@ -81,7 +81,6 @@ async function divideByColumn(cols: number) {
       colCounter++;
     }
   }
-  console.log(result);
 
   columnsItems.value = result;
   return result;
@@ -123,8 +122,7 @@ function masonryBreakpoints() {
   if (
     window.innerWidth <
     props.columnsWidth * columnsNumber.value +
-      props.gap * (columnsNumber.value - 1) -
-      100
+      props.gap * (columnsNumber.value - 1)
   ) {
     columnsNumber.value--;
     masonryBreakpoints();
@@ -133,7 +131,7 @@ function masonryBreakpoints() {
     if (
       columnsNumber.value < props.columns &&
       window.innerWidth >
-        props.columnsWidth * columnsNumber.value +
+        props.columnsWidth * (columnsNumber.value + 1) +
           props.gap * (columnsNumber.value + 1)
     ) {
       columnsNumber.value++;

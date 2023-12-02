@@ -15,7 +15,7 @@
             >
               <a-menu-item
                 v-for="item in menu"
-                :key="item.title.toLowerCase()"
+                :key="item.key"
                 @click="item.to"
               >
                 <template #icon>
@@ -83,16 +83,20 @@ const categoriesList = ref<Array<any>>([
 const menu = ref([
   {
     title: "Daily Ranking",
+    key: "daily",
     icon: AntDesignOutlined,
     to: () => router.push({ path: "/gallery/daily", query: route.query }),
   },
   {
     title: "Newest",
+    key: "newest",
+
     icon: AntDesignOutlined,
     to: () => router.push({ path: "/gallery/newest", query: route.query }),
   },
   {
     title: "Most Reactions",
+    key: "reactions",
     icon: FireOutlined,
     to: () => router.push({ path: "/gallery/reactions", query: route.query }),
     iconColor: "#FA541C",
@@ -114,8 +118,8 @@ const current = ref<string[]>([
     // width: 100%;
     // max-width: 432px;
 
-    @media (min-width: 600px){
-     display: flex;
+    @media (min-width: 600px) {
+      display: flex;
     }
   }
 }

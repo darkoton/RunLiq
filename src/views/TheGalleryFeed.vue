@@ -4,32 +4,45 @@
       <div class="feed__body">
         <TheMasonry
           :items="items"
-          :columns="3"
-          :columns-width="320"
-          :gap="16"
+          :columns="4"
+          :columns-width="260"
+          :gap="20"
           class="feed__list"
         >
           <template #default="{ item }">
             <article class="feed__post post">
               <div class="post__info">
-                <div class="post__info-left">
-                  <div class="post__avatar">
-                    <img :src="item.user.avatar" alt="" />
-                  </div>
-                </div>
-                <div class="post__info-right">
-                  <div class="post__info-top">
-                    <div class="post__username">{{ item.user.name }}</div>
-                    <div class="post__date">{{ dynamicDate(item.date) }}</div>
-                  </div>
-
-                  <div class="post__info-bottom">
-                    <span class="post__title">{{ item.title }}</span>
-                  </div>
-                </div>
+                <span class="post__avatar">
+                  <img :src="item.user.avatar" alt="" />
+                </span>
+                <span class="post__username">{{ item.user.name }}</span>
               </div>
 
               <div class="post__img">
+                <a-dropdown
+                  :trigger="['click']"
+                  placement="bottomRight"
+                  class="post__menu"
+                >
+                  <a class="post__menu-button" @click.prevent>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </a>
+                  <template #overlay>
+                    <a-menu>
+                      <a-menu-item key="0">
+                        <a :href="item.url" download class="ant-dropdown-link"
+                          >Download</a
+                        >
+                      </a-menu-item>
+                      <a-menu-item key="1">
+                        <a href="#">Report</a>
+                      </a-menu-item>
+                    </a-menu>
+                  </template>
+                </a-dropdown>
+
                 <img :src="item.url" alt="" />
 
                 <div class="post__counters">
@@ -132,23 +145,56 @@ const items = [
     date: new Date("2023-11-16"),
     url: "/test arts/dream_TradingCard (3).jpg",
   },
+  {
+    title: "knight epic",
+    comments: 314,
+    likes: 143,
+    user: {
+      name: "Mister German",
+      avatar: "/avatar.png",
+    },
+    date: new Date("2023-11-16"),
+    url: "/test arts/knight epic.png",
+  },
+  {
+    title: "knight",
+    comments: 314,
+    likes: 143,
+    user: {
+      name: "Mister German",
+      avatar: "/avatar.png",
+    },
+    date: new Date("2023-11-16"),
+    url: "/test arts/knight.png",
+  },
+  {
+    title: "rage",
+    comments: 314,
+    likes: 143,
+    user: {
+      name: "Mister German",
+      avatar: "/avatar.png",
+    },
+    date: new Date("2023-11-16"),
+    url: "/test arts/rage.jpg",
+  },
 ];
 
-function dynamicDate(date: any) {
-  return new Date().getTime() - 86400000 * 4 > new Date(date).getTime()
-    ? new Date(date).toLocaleDateString()
-    : new Date().getTime() - 86400000 * 3 > new Date(date).getTime()
-    ? "3 days ago"
-    : new Date().getTime() - 86400000 * 2 > new Date(date).getTime()
-    ? "2 days ago"
-    : new Date().getTime() - 86400000 > new Date(date).getTime()
-    ? "1 day ago"
-    : new Date(date).getHours() +
-      ":" +
-      (new Date(date).getMinutes() < 10
-        ? "0" + new Date(date).getMinutes()
-        : new Date(date).getMinutes());
-}
+// function dynamicDate(date: any) {
+//   return new Date().getTime() - 86400000 * 4 > new Date(date).getTime()
+//     ? new Date(date).toLocaleDateString()
+//     : new Date().getTime() - 86400000 * 3 > new Date(date).getTime()
+//     ? "3 days ago"
+//     : new Date().getTime() - 86400000 * 2 > new Date(date).getTime()
+//     ? "2 days ago"
+//     : new Date().getTime() - 86400000 > new Date(date).getTime()
+//     ? "1 day ago"
+//     : new Date(date).getHours() +
+//       ":" +
+//       (new Date(date).getMinutes() < 10
+//         ? "0" + new Date(date).getMinutes()
+//         : new Date(date).getMinutes());
+// }
 </script>
 
 
@@ -167,47 +213,17 @@ function dynamicDate(date: any) {
   & .post {
     &__info {
       display: flex;
-      @include adaptiv-value(column-gap, 8, 4, 1);
-      @include adaptiv-value(padding-bottom, 11, 5, 1);
+      @include adaptiv-value(column-gap, 6, 3, 1);
+      // @include adaptiv-value(padding-bottom, 11, 5, 1);
+      padding-bottom: 4px;
       align-items: center;
       max-width: 100%;
-
-      &-right {
-        display: flex;
-        flex-direction: column;
-        row-gap: 4px;
-        width: 100%;
-        max-width: 88%;
-      }
-      &-top {
-        display: flex;
-        align-items: center;
-        @include adaptiv-value(column-gap, 8, 4, 1);
-      }
-      &-bottom {
-        width: 100%;
-      }
     }
 
     &__username {
       color: rgba(0, 0, 0, 0.45);
       @include adaptiv-font(12, 10);
       @include adaptiv-line-height(20, 16);
-    }
-    &__date {
-      color: #bfbfbf;
-      @include adaptiv-font(12, 10);
-      @include adaptiv-line-height(20, 16);
-    }
-    &__title {
-      display: block;
-      color: rgba(0, 0, 0, 0.85);
-      @include adaptiv-font(14, 12);
-      @include adaptiv-line-height(14, 12);
-      white-space: nowrap;
-      // width: 100%;
-      overflow: hidden;
-      text-overflow: ellipsis;
     }
     &__img {
       border-radius: 12px;
@@ -229,8 +245,9 @@ function dynamicDate(date: any) {
       box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.05);
       backdrop-filter: blur(2px);
       color: #fff;
-      @include adaptiv-padding(7, 3.5, 15, 8.5, 1);
-      @include adaptiv-value(column-gap, 20, 8, 1);
+      // @include adaptiv-padding(7, 3.5, 15, 8.5, 1);
+      padding: 4px 10px;
+      @include adaptiv-value(column-gap, 16, 8, 1);
       display: flex;
     }
     &__counter {
@@ -249,8 +266,24 @@ function dynamicDate(date: any) {
       @include adaptiv-font(18, 15);
     }
     &__counter-value {
-      @include adaptiv-font(14, 10);
+      font-size: 12px;
       line-height: 18px;
+    }
+    &__menu {
+    }
+    &__menu-button {
+      position: absolute;
+      top: 10px;
+      right: 18px;
+      display: flex;
+      flex-direction: column;
+      row-gap: 3.5px;
+
+      span {
+        width: 3px;
+        height: 3px;
+        background-color: #fff;
+      }
     }
   }
 }
