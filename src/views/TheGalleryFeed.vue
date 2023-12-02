@@ -269,20 +269,44 @@ const items = [
       font-size: 12px;
       line-height: 18px;
     }
-    &__menu {
-    }
     &__menu-button {
+      z-index: -1;
+      opacity: 0;
       position: absolute;
       top: 10px;
       right: 18px;
       display: flex;
       flex-direction: column;
       row-gap: 3.5px;
+      transition: all 0.3s ease 0s;
+
+      &.ant-dropdown-open {
+        z-index: 0;
+        opacity: 1;
+      }
 
       span {
         width: 3px;
         height: 3px;
         background-color: #fff;
+      }
+    }
+
+    @media (any-hover: hover) {
+      cursor: pointer;
+      transition: all 0.3s ease 0s;
+      &:hover {
+        & .post__menu-button {
+          z-index: 0;
+          opacity: 1;
+        }
+      }
+    }
+
+    @media only screen and (hover: none) {
+      &__menu-button {
+        opacity: 1;
+        z-index: 0;
       }
     }
   }
