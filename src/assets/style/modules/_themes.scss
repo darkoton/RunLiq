@@ -7,6 +7,9 @@
   --bg-drop-down:#fff;
   --color-drop-down: var(--black);
   --bg-hover-drop-down: #E6F7FF;
+  --fullBlack: #000;
+  --privacy-title: #141414;
+  --run-black: #262626;
 }
 
 html.dark {
@@ -19,4 +22,7 @@ html.dark {
   --bg-drop-down:#1F1F1F;
   --color-drop-down: #FFF0F6;
   --bg-hover-drop-down: #1f2329;
+  --fullBlack: #fff;
+  --privacy-title: #fff;
+  --run-black: #fff;
 }

@@ -187,8 +187,11 @@
 
 <style lang="scss" scoped>
 .policy {
+  & * {
+    color: var(--fullBlack);
+  }
   &__title {
-    color: #141414;
+    color: var(--privacy-title);
     @include adaptiv-font(30, 20);
     font-weight: 500;
     @include adaptiv-line-height(40, 27);
@@ -210,7 +213,7 @@
 
   &__paragraph,
   &__list {
-    color: #000;
+    color: var(--fullBlack);
     @include adaptiv-font(14, 12);
     @include adaptiv-line-height(22, 16);
   }
@@ -232,14 +235,13 @@
 
       &::before {
         content: "\2022"; /* Устанавливаем в качестве маркера круг (Unicode-символ для круга) */
-        color: #000; /* Цвет маркера */
+        color: var(--fullBlack);
         font-size: 14px; /* Размер маркера, можно настроить по вашему вкусу */
         margin-right: 0.5em; /* Расстояние между маркером и текстом списка */
       }
     }
   }
   &__subtitle {
-    color: #000;
     @include adaptiv-font(24, 18);
     @include adaptiv-line-height(32, 25);
 
@@ -248,7 +250,6 @@
     }
   }
   &__small-title {
-    color: #000;
     @include adaptiv-font(20, 16);
     @include adaptiv-line-height(28, 22);
 
