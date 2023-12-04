@@ -203,7 +203,7 @@ watch(
     display: flex;
     align-items: center;
     @include adaptiv-value(column-gap, 8, 4, 1);
-    color: #313e5a;
+    color: var(--darkBlue);
     font-family: Geometria;
     @include adaptiv-font(22, 16);
     padding: 3px 0;
@@ -222,7 +222,7 @@ watch(
       display: flex;
       align-items: center;
       @include adaptiv-value(column-gap, 10, 5, 1);
-      color: var(--character-title-85, rgba(0, 0, 0, 0.85));
+      color: var(--black);
       font-size: 14px;
       position: relative;
       line-height: 22px;
@@ -266,6 +266,8 @@ watch(
 
     &-menu {
       border: 0;
+      background: var(--background);
+      color: var(--black);
     }
   }
   &__nav-mob {
@@ -286,7 +288,16 @@ watch(
     @include adaptiv-line-height(22, 18);
     color: $colorBlue;
     border-color: $colorBlue;
+    background: transparent;
     border-radius: 12px;
+
+    @media (any-hover: hover) {
+      cursor: pointer;
+      transition: all 0.3s ease 0s;
+      &:hover {
+        background: transparent;
+      }
+    }
   }
   &__google-auth {
     display: flex;
@@ -294,7 +305,7 @@ watch(
     column-gap: 5px;
     background-color: transparent;
     font-size: 12px;
-    box-shadow: 0 1px 3px 1px #ccc;
+    box-shadow: 0 1px 3px 1px #8d8d8d;
     @include adaptiv-padding(5, 2.5, 40, 20, 1);
     border-radius: 5px;
     transition: all 0.3s ease 0s;

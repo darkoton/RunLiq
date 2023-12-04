@@ -97,18 +97,22 @@ function open() {
     width: 100%;
     height: 100%;
     max-width: 60vw;
-    max-height: 70vh;
+    max-height: 86vh;
     position: absolute;
     transform: translate(-50%, -50%);
     top: 50%;
     left: 50%;
-    border-radius: 12px;
     overflow: hidden;
 
     img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: cover;
+      border-radius: 12px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
     }
   }
   &__actions {

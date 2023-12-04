@@ -29,7 +29,7 @@
           <span>Darkmode</span>
           <a-switch
             class="header__menu-user-switch"
-            v-model:checked="userSettings.darkMode"
+            v-model:checked="isDark"
             size="small"
           />
         </a-menu-item>
@@ -45,6 +45,9 @@
 import { ref, defineEmits } from "vue";
 import { useRouter } from "vue-router";
 import { UserOutlined } from "@ant-design/icons-vue";
+import { useDark } from "@vueuse/core";
+
+const isDark = useDark();
 
 defineEmits(["logOut"]);
 const userMenu = ref(false);
@@ -53,7 +56,6 @@ const router = useRouter();
 
 const userSettings = ref({
   active18: false,
-  darkMode: false,
 });
 </script>
 
@@ -64,7 +66,7 @@ const userSettings = ref({
     align-items: center;
     @include adaptiv-value(column-gap, 10, 5, 1);
     background: transparent;
-    color: rgba(0, 0, 0, 0.85);
+    color: var(--black);
     padding: 12px 0;
     border-bottom: 2px solid transparent;
     @media (any-hover: hover) {

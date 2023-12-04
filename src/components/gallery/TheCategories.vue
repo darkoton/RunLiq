@@ -39,6 +39,7 @@ defineProps({
     @include adaptiv-value(padding, 7, 4, 1);
     display: flex;
     align-items: center;
+    background: transparent;
 
     &.ant-btn-dashed {
       border-color: $colorBlue;

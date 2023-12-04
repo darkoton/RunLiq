@@ -226,7 +226,7 @@ function preview(event) {
     }
 
     &__username {
-      color: rgba(0, 0, 0, 0.45);
+      color: var(--gray);
       @include adaptiv-font(12, 10);
       @include adaptiv-line-height(20, 16);
     }
@@ -278,8 +278,9 @@ function preview(event) {
       z-index: -1;
       opacity: 0;
       position: absolute;
+      padding: 0 10px;
       top: 10px;
-      right: 18px;
+      right: 8px;
       display: flex;
       flex-direction: column;
       row-gap: 3.5px;

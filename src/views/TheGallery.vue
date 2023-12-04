@@ -3,10 +3,6 @@
     <div class="gallery__wrapper">
       <div class="gallery__container _container">
         <div class="gallery__body">
-          <Categories
-            class="gallery__categories"
-            :categories="categoriesList"
-          />
           <div class="gallery__sort">
             <a-menu
               v-model:selectedKeys="current"
@@ -28,6 +24,10 @@
               </a-menu-item>
             </a-menu>
           </div>
+          <Categories
+            class="gallery__categories"
+            :categories="categoriesList"
+          />
 
           <router-view></router-view>
         </div>
@@ -117,6 +117,12 @@ const current = ref<string[]>([
     @include adaptiv-value(margin-bottom, 24, 15, 1);
     // width: 100%;
     // max-width: 432px;
+
+    ul {
+      background: transparent;
+      border-bottom-color: var(--ant-border);
+      color: var(--black);
+    }
 
     @media (min-width: 600px) {
       display: flex;

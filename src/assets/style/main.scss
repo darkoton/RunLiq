@@ -10,24 +10,30 @@
 //< " ФАЙЛ С ОТДЕЛЬНЫМИ БЛОКАМИ " >=============================================================================================================>//
 @import "./modules/_ui";
 
+@import "./modules/_themes";
 @import "./modules/_ant-design";
 
 
+html, body{
+  height: auto;
+  width: auto;
+}
+
 body {
   font-family: $fontFamily;
-  color: $colorDark;
+  color: var(--black);
   font-size: 14px;
   overflow-y: scroll;
-  @include scrollbars(5px, rgba($colorBlue, 0.5), transparent, 10px);
+  @include scrollbars(5px, rgba($colorBlue, 0.5), var(--background), 10px);
   // ._lock-scroll
   &._lock-scroll {
      overflow: hidden;
   }
 }
 #app{
-  height: 100%;
-  width: 100%;
-  background-color: $colorBg;
+  // height: 100%;
+  // width: 100%;
+  background-color: var(--background);
 }
 
 //< " ОБОЛОЧКА " >=============================================================================================================>//

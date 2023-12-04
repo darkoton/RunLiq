@@ -63,6 +63,15 @@ import { RocketOutlined, WechatOutlined } from "@ant-design/icons-vue";
   &__discord {
     color: $colorBlue;
     border-color: $colorBlue;
+    background: transparent;
+
+    @media (any-hover: hover) {
+      cursor: pointer;
+      transition: all 0.3s ease 0s;
+      &:hover {
+        background: transparent;
+      }
+    }
 
     &:active {
       color: #096dd9;
