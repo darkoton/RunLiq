@@ -2,6 +2,12 @@
   <section class="feed">
     <div class="feed__wrapper">
       <div class="feed__body">
+        <ThePreview
+          :urlImg="previewData.url"
+          :open="previewData.open"
+          @close="previewData.open = false"
+          :img="previewData.img"
+        />
         <TheMasonry
           :items="items"
           :columns="4"
@@ -43,7 +49,7 @@
                   </template>
                 </a-dropdown>
 
-                <img :src="item.url" alt="" />
+                <img :src="item.url" alt="" @click="preview" />
 
                 <div class="post__counters">
                   <span class="post__likes post__counter"
@@ -65,8 +71,17 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from "vue";
 import TheMasonry from "@/components/ui/TheMasonry.vue";
 import { LikeOutlined, MessageOutlined } from "@ant-design/icons-vue";
+import ThePreview from "@/components/ui/ThePreview.vue";
+
+const previewData = ref({
+  url: "",
+  img: null,
+  open: false,
+});
+
 const items = [
   {
     title: "test 1",
@@ -180,21 +195,11 @@ const items = [
   },
 ];
 
-// function dynamicDate(date: any) {
-//   return new Date().getTime() - 86400000 * 4 > new Date(date).getTime()
-//     ? new Date(date).toLocaleDateString()
-//     : new Date().getTime() - 86400000 * 3 > new Date(date).getTime()
-//     ? "3 days ago"
-//     : new Date().getTime() - 86400000 * 2 > new Date(date).getTime()
-//     ? "2 days ago"
-//     : new Date().getTime() - 86400000 > new Date(date).getTime()
-//     ? "1 day ago"
-//     : new Date(date).getHours() +
-//       ":" +
-//       (new Date(date).getMinutes() < 10
-//         ? "0" + new Date(date).getMinutes()
-//         : new Date(date).getMinutes());
-// }
+function preview(event) {
+  previewData.value.open = true;
+  previewData.value.img = event.target;
+  previewData.value.url = event.target.src;
+}
 </script>
 
 

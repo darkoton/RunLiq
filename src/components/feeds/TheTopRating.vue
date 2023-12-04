@@ -3,10 +3,28 @@
     <div class="feed__wrapper">
       <div class="feed__container _container">
         <div class="feed__body">
+          <ThePreview
+            :urlImg="previewData.url"
+            :open="previewData.open"
+            @close="previewData.open = false"
+            :img="previewData.img"
+          />
           <h2 class="feed__title">Top Creations <span>this week</span></h2>
 
           <ul class="feed__list">
-            <TheCard v-for="art in arts" :key="art" :data="art" type="rating" />
+            <TheCard
+              v-for="art in arts"
+              :key="art"
+              :data="art"
+              type="rating"
+              @preview="
+                (img) => (
+                  (previewData.url = img.src),
+                  (previewData.img = img),
+                  (previewData.open = true)
+                )
+              "
+            />
           </ul>
         </div>
       </div>
@@ -17,6 +35,13 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import TheCard from "@/components/ui/TheCard.vue";
+import ThePreview from "@/components/ui/ThePreview.vue";
+
+const previewData = ref({
+  url: "",
+  open: false,
+  img: null,
+});
 
 const arts = ref([
   {

@@ -2,7 +2,7 @@
   <div class="card">
     <div class="card__body">
       <div class="card__img">
-        <img :src="data.url" alt="art" />
+        <img :src="data.url" alt="art" @click="preview" />
       </div>
       <!-- <div class="card__rating-panel rating-panel" v-if="type == 'rating'">
         <span class="rating-panel__item rating-panel__likes">
@@ -36,7 +36,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps } from "vue";
+import { defineProps, defineEmits } from "vue";
 import {
   MessageOutlined,
   LikeFilled,
@@ -56,6 +56,12 @@ defineProps({
     default: "top",
   },
 });
+
+const emit = defineEmits(["preview"]);
+
+function preview(event) {
+  emit("preview", event.target);
+}
 </script>
 
 <style lang="scss" scoped>
