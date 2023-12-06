@@ -1,22 +1,20 @@
 <template>
   <section class="main">
     <div class="main__wrapper">
-      <div class="main__container _container">
-        <div class="main__body">
-          <h1 class="main__title">
-            Make Your Babe with <span class="red">AI</span>
-          </h1>
+      <div class="main__body">
+        <h1 class="main__title">
+          Make Your Babe with <span class="red">AI</span>
+        </h1>
 
-          <div class="main__buttons">
-            <a-button type="dashed" class="main__discord" size="large">
-              <template #icon><WechatOutlined /></template>
-              Discord
-            </a-button>
-            <a-button type="primary" size="large">
-              <template #icon><RocketOutlined /></template>
-              Run Now</a-button
-            >
-          </div>
+        <div class="main__buttons">
+          <a-button type="dashed" class="main__discord" size="large">
+            <template #icon><WechatOutlined /></template>
+            Discord
+          </a-button>
+          <a-button type="primary" size="large">
+            <template #icon><RocketOutlined /></template>
+            Run Now</a-button
+          >
         </div>
       </div>
     </div>
