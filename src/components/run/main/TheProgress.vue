@@ -35,9 +35,9 @@ import { ref } from "vue";
 import { LikeOutlined } from "@ant-design/icons-vue";
 
 const likes = ref<Array<any>>([
-  "./test arts/fire.png",
-  "./test arts/rage.png",
-  "./test arts/saitama.jpg",
+  "/test-arts/fire.png",
+  "/test-arts/rage.png",
+  "/test-arts/saitama.jpg",
 ]);
 </script>
 
