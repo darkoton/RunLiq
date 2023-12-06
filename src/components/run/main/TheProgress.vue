@@ -109,7 +109,7 @@ const likes = ref<Array<any>>([
 
     &-like {
       color: $colorBlue;
-      font-size: 23px;
+      @include adaptiv-font(23, 18);
       @media (any-hover: hover) {
         cursor: pointer;
         transition: all 0.3s ease 0s;

@@ -1,4 +1,5 @@
 :root {
+  --white:#fff;
   --darkBlue: #313E5A;
   --background: #fff;
   --black: rgba(0, 0, 0, 0.85);
@@ -10,10 +11,17 @@
   --fullBlack: #000;
   --privacy-title: #141414;
   --run-black: #262626;
+  --textarea-bg:#fff;
+  --textarea-border: #d9d9d9;
+  --switch-bg: rgba(0, 0, 0, 0.25);
+  --slider-color: var(--gray);
+  --slider-rail:  #F5F5F5;
+  --slider-track:  #91d5ff;
+
 }
 
 html.dark {
-  --white:#fff;
+  --white:#000;
   --darkBlue: #fff;
   --background: #1A1B1E;
   --black: rgba(255, 255, 255);
@@ -25,4 +33,11 @@ html.dark {
   --fullBlack: #fff;
   --privacy-title: #fff;
   --run-black: #fff;
+  --textarea-bg:#222;
+  --textarea-border: #555;
+  --switch-bg: rgba(0, 0, 0, 0.5);
+  --slider-color: #c9c9c9;
+  --slider-rail: #494949;
+  --slider-track:  #3eb2fa;
+
 }

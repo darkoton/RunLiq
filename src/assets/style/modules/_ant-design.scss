@@ -16,3 +16,46 @@
 .ant-progress-circle .ant-progress-text{
   color: var(--black);
 }
+textarea.ant-input, .ant-input-number{
+  background-color: var(--textarea-bg);
+  border-color: var(--textarea-border);
+  color: var(--black);
+}
+.ant-switch{
+  background-color: var(--switch-bg);
+}
+.ant-switch-checked {
+  background-color: #1890ff;
+}
+.ant-input-textarea-show-count::after{
+  color: var(--gray);
+}
+
+.ant-slider-mark-text{
+  color: var(--slider-color);
+}
+.ant-slider-mark-text-active{
+  color: var(--black);
+}
+.ant-slider-rail{
+  background-color: var(--slider-rail);
+}
+.ant-slider-track{
+  background-color: var(--slider-track);
+}
+.ant-select, .ant-select-arrow{
+  color: var(--black);
+  background-color: var(--textarea-bg);
+}
+.ant-select-dropdown{
+  background-color: var(--bg-drop-down);
+  color: #fff;
+}
+.ant-select-item{
+  color: var(--black);
+}
+.ant-select-item-option-active:not(.ant-select-item-option-disabled){
+  background-color: var(--bg-hover-drop-down);
+  color: var(--black);
+
+}
