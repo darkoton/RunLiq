@@ -5,7 +5,12 @@
         <div class="run__body">
           <h1 class="run__title">Anime AI Art Generator for Free</h1>
           <Main class="run__main" />
-          <TheFeeds :title="'Art history'" type="default" :data="arts" />
+          <TheFeeds
+            :title="'Art history'"
+            type="default"
+            :data="arts"
+            :load="true"
+          />
         </div>
       </div>
     </div>

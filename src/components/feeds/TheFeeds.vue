@@ -29,7 +29,9 @@
           />
         </ul>
 
-        <a-button type="dashed" class="feed__button">Load more</a-button>
+        <a-button type="dashed" class="feed__button" v-if="load"
+          >Load more</a-button
+        >
       </div>
     </div>
   </section>

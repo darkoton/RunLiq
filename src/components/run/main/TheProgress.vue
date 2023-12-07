@@ -47,8 +47,9 @@ const likes = ref<Array<any>>([
   flex-direction: column;
   align-items: center;
   text-align: center;
-  width: 100%;
-  max-width: 420px;
+  // width: 100%;
+  // max-width: 420px;
+  flex: 1 1 auto;
 
   &__title,
   &__desc {

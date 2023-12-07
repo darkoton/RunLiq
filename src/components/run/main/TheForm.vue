@@ -159,18 +159,22 @@
       </div>
       <!-- /Advanced settinhs spoiler -->
 
-      <a-button class="form__button" type="primary">Run Now 5 LC</a-button>
+      <a-button class="form__button" type="primary" @click="$emit('submit')"
+        >Run Now 5 LC</a-button
+      >
     </ul>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, defineEmits } from "vue";
 import { DownOutlined } from "@ant-design/icons-vue";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import "swiper/css";
 import "swiper/css/effect-fade";
 import { EffectFade, Autoplay } from "swiper/modules";
+
+defineEmits(["submit"]);
 
 const switchValue = ref<boolean>(false);
 const widght = ref<number>(512);
