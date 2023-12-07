@@ -6,6 +6,7 @@
   --ant-border: #F0F0F0;
   --gray:rgba(0, 0, 0, 0.45);
   --darkGray: #BFBFBF;
+  --lightGray: #FAFAFA  ;
   --bg-drop-down:#fff;
   --color-drop-down: var(--black);
   --bg-hover-drop-down: #E6F7FF;
@@ -18,7 +19,6 @@
   --slider-color: var(--gray);
   --slider-rail:  #F5F5F5;
   --slider-track:  #91d5ff;
-
 }
 
 html.dark {
@@ -29,6 +29,7 @@ html.dark {
   --ant-border: #18191C;
   --gray:#F5F5F5;
   --darkGray: #464646;
+  --lightGray: rgb(53, 53, 53);
   --bg-drop-down:#1F1F1F;
   --color-drop-down: #FFF0F6;
   --bg-hover-drop-down: #1f2329;

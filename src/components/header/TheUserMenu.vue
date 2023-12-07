@@ -22,7 +22,7 @@
         <a-menu-item key="likes" @click="router.push('/likes')">
           <span>Your Likes</span>
         </a-menu-item>
-        <a-menu-item key="make" @click="router.push('/make')">
+        <a-menu-item key="make" @click="router.push('/post-create')">
           <span>Create Post</span>
         </a-menu-item>
         <a-menu-item key="adult">

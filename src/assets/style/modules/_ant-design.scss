@@ -16,9 +16,9 @@
 .ant-progress-circle .ant-progress-text{
   color: var(--black);
 }
-textarea.ant-input, .ant-input-number{
-  background-color: var(--textarea-bg);
-  border-color: var(--textarea-border);
+textarea.ant-input, .ant-input-number, .ant-input, .ant-select-selector{
+  background-color: var(--textarea-bg) !important;
+  border-color: var(--textarea-border) !important;
   color: var(--black);
 }
 .ant-switch{
@@ -58,4 +58,22 @@ textarea.ant-input, .ant-input-number{
   background-color: var(--bg-hover-drop-down);
   color: var(--black);
 
+}
+.ant-form-item-label label{
+  color: var(--black);
+}
+.ant-select-multiple .ant-select-selection-item{
+  background-color: var(--slider-rail);
+  border-color: var(--ant-border);
+}
+.ant-select-multiple .ant-select-selection-item-remove svg{
+  fill: var(--black)
+}
+.ant-select-item-option-selected:not(.ant-select-item-option-disabled){
+  background-color: var(--bg-hover-drop-down);
+  color: var(--black);
+}
+.ant-btn-dashed{
+  color: var(--black);
+  background: transparent !important;
 }

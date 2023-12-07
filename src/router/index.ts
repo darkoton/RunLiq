@@ -27,6 +27,11 @@ const routes = [
     ],
   },
   {
+    path: '/post-create',
+    name: 'post create',
+    component: () => import(/* webpackChunkName: "about" */ '@/views/TheCreatePost.vue'),
+  },
+  {
     path: '/privacy-policy',
     name: 'privacy policy',
     component: () => import(/* webpackChunkName: "about" */ '@/views/ThePrivacyPolicy.vue'),
