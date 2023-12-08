@@ -13,20 +13,33 @@
           {{ title }} <span>{{ subtitle }}</span>
         </h2>
 
-        <ul class="feed__list">
+        <ul
+          class="feed__list"
+          :style="{
+            'grid-template-columns': `repeat(auto-fit, minmax(${
+              sizes.width - 50 + 'px'
+            }, ${sizes.width + 'px'}))`,
+            'grid-template-rows': `repeat(auto-fit, minmax(${
+              sizes.height - 50 + 'px'
+            }, ${sizes.height + 'px'}))`,
+          }"
+        >
           <TheCard
-            v-for="art in data"
+            v-for="(art, index) in data"
             :key="art"
             :data="art"
-            :type="type"
-            @preview="
-              (img) => (
-                (previewData.url = img.src),
-                (previewData.img = img),
-                (previewData.open = true)
-              )
-            "
-          />
+            :type="type == 'select' ? 'default' : type"
+            :sizes="sizes"
+            @preview="preview"
+            @click="type == 'select' ? select({ src: art.url, id: index }) : ''"
+            :class="{
+              select: store.selectValue.findIndex((el) => el.id == index) > -1,
+            }"
+          >
+            <span class="select-order">{{
+              store.selectValue.indexOf(index) + 1
+            }}</span>
+          </TheCard>
         </ul>
 
         <a-button type="dashed" class="feed__button" v-if="load"
@@ -37,12 +50,14 @@
   </section>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import { ref, defineProps } from "vue";
 import TheCard from "@/components/ui/TheCard.vue";
 import ThePreview from "@/components/ui/ThePreview.vue";
+import { usePostCreateStore } from "@/stores/create-post";
 
-defineProps({
+const store = usePostCreateStore();
+const props = defineProps({
   title: {
     type: String,
     default: "",
@@ -63,6 +78,12 @@ defineProps({
     type: Boolean,
     default: false,
   },
+  sizes: {
+    type: Object,
+    default: () => {
+      return { width: 250, height: 250 };
+    },
+  },
 });
 
 const previewData = ref({
@@ -70,6 +91,31 @@ const previewData = ref({
   open: false,
   img: null,
 });
+
+function preview(img) {
+  if (props.type == "select") {
+    return;
+  }
+
+  previewData.value.url = img.src;
+  previewData.value.img = img;
+  previewData.value.open = true;
+}
+
+function select(data) {
+  if (store.selectValue.findIndex((el) => el.id == data.id) > -1) {
+    store.selectValue.splice(
+      store.selectValue.findIndex((el) => el.id == data.id),
+      1
+    );
+
+    console.log(store.selectValue);
+
+    return;
+  }
+  store.selectValue.push(data);
+  console.log(store.selectValue);
+}
 </script>
 
 <style lang="scss" scoped>
@@ -100,8 +146,8 @@ const previewData = ref({
   &__list {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 250px));
-    grid-template-rows: repeat(auto-fit, minmax(250px, 300px));
+    // grid-template-columns: repeat(auto-fit, minmax(200px, 250px));
+    // grid-template-rows: repeat(auto-fit, minmax(250px, 300px));
     justify-content: center;
     @include adaptiv-value(gap, 25, 20, 1);
     max-height: 630px;
@@ -127,6 +173,24 @@ const previewData = ref({
       color: #096dd9;
       border-color: #096dd9;
     }
+  }
+  & .select-order {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    color: $colorBlue;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    line-height: 20px;
+  }
+  & .select .select-order {
+    z-index: 9;
   }
 }
 </style>

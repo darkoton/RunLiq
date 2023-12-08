@@ -10,6 +10,7 @@
             type="default"
             :data="arts"
             :load="true"
+            :sizes="{ width: 250, height: 300 }"
           />
         </div>
       </div>

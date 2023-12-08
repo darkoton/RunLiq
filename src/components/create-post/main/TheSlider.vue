@@ -2,7 +2,7 @@
   <div class="slider">
     <div class="slider__wrapper">
       <div class="slider__body">
-        <div class="slider__empty" v-if="!slides.length">
+        <div class="slider__empty" v-if="!store.selectValue.length">
           Select your jobs below
         </div>
 
@@ -20,27 +20,32 @@
               ><RightOutlined
             /></span>
             <swiper-slide
-              v-for="slide in slides"
+              v-for="slide in store.selectValue"
               :key="slide"
               class="slider__slide"
-              ><img :src="slide" alt=""
+              ><img :src="slide.src" alt=""
             /></swiper-slide>
           </swiper>
-          <div class="slider__pagination">
-            <span
-              class="slider__pagination-bullet"
-              v-for="bullet in swiperSlider.slides.length"
-              :key="bullet"
-              :class="{
-                'slider__pagination-bullet-active':
-                  bullet == swiperSlider.realIndex + 1,
-              }"
-            ></span>
-          </div>
-          <div class="slider__fraction">
-            ({{ swiperSlider ? swiperSlider.realIndex + 1 : "" }}/{{
-              swiperSlider ? swiperSlider.slides.length : ""
-            }})
+          <div
+            class="slider__paginations"
+            v-if="swiperSlider.slides && swiperSlider.slides.length"
+          >
+            <div class="slider__pagination">
+              <span
+                class="slider__pagination-bullet"
+                v-for="bullet in swiperSlider.slides.length"
+                :key="bullet"
+                :class="{
+                  'slider__pagination-bullet-active':
+                    bullet == swiperSlider.realIndex + 1,
+                }"
+              ></span>
+            </div>
+            <div class="slider__fraction">
+              ({{ swiperSlider ? swiperSlider.realIndex + 1 : "" }}/{{
+                swiperSlider ? swiperSlider.slides.length : ""
+              }})
+            </div>
           </div>
         </div>
       </div>
@@ -54,17 +59,20 @@ import { Swiper, SwiperSlide } from "swiper/vue";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons-vue";
 // Import Swiper styles
 import "swiper/css";
+import { usePostCreateStore } from "@/stores/create-post";
+
+const store = usePostCreateStore();
 
 let swiperSlider = ref({
   slides: [],
 });
 
-const slides = ref([
-  "./test-arts/rage.png",
-  "./test-arts/knight.png",
-  "./test-arts/rage.jpg",
-  "./test-arts/saitama.jpg",
-]);
+// const slides = ref([
+//   "./test-arts/rage.png",
+//   "./test-arts/knight.png",
+//   "./test-arts/rage.jpg",
+//   "./test-arts/saitama.jpg",
+// ]);
 
 function onSwiper(swiper) {
   swiperSlider.value = swiper;
@@ -87,12 +95,13 @@ function onSwiper(swiper) {
 
   &__empty {
     height: 100%;
+    width: 100%;
+    max-width: 450px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     color: var(--gray);
-
     border-radius: 2px;
     border: 2px dashed var(--darkGray);
     background: var(--lightGray);
@@ -140,12 +149,16 @@ function onSwiper(swiper) {
     right: 0;
   }
   &__slide {
-    @include adaptiv-value(height, 450, 350, 1);
+    @include adaptiv-value(height, 425, 350, 1);
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
+  }
+  &__paginations {
+    display: flex;
+    flex-direction: column;
   }
   &__pagination {
     display: flex;

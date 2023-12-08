@@ -9,6 +9,7 @@
             :subtitle="'this week'"
             type="rating"
             :data="arts"
+            :sizes="{ width: 250, height: 300 }"
           />
         </div>
       </div>

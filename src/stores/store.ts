@@ -1,20 +1,14 @@
 // import axios from '@/axios/base'; // axios
-import { createStore } from 'vuex'
+import { defineStore } from 'pinia'
 
-const store = createStore({
-  state() {
-    return {}
+export const useStore = defineStore('store', {
+  state: () => {
+    return {
+
+    }
   },
+
   actions: {
-    offScroll() {
-      document.body.classList.add('_lock-scroll')
-    },
-    onScroll() {
-      document.body.classList.remove('_lock-scroll')
-    },
-  },
-  getters: {},
-  mutations: {
     dynamicDate(date: any) {
       return new Date().getTime() - 86400000 * 4 > new Date(date).getTime()
         ? new Date(date).toLocaleDateString()
@@ -29,8 +23,13 @@ const store = createStore({
               (new Date(date).getMinutes() < 10
                 ? "0" + new Date(date).getMinutes()
                 : new Date(date).getMinutes());
-    }
-  }
+    },
+    offScroll() {
+      document.body.classList.add('_lock-scroll')
+    },
+    onScroll() {
+      document.body.classList.remove('_lock-scroll')
+    },
+  },
 })
 
-export default store

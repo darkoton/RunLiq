@@ -5,6 +5,13 @@
         <div class="create__body">
           <h2 class="create__title">Post Create</h2>
           <TheMain />
+
+          <TheFeeds
+            :title="'Art history'"
+            type="select"
+            :data="arts"
+            :sizes="{ width: 250, height: 250 }"
+          />
         </div>
       </div>
     </div>
@@ -12,7 +19,93 @@
 </template>
 
 <script setup>
+import { ref } from "vue";
+
 import TheMain from "@/components/create-post/TheMain.vue";
+import TheFeeds from "@/components/feeds/TheFeeds.vue";
+
+const arts = ref([
+  {
+    url: "./test-arts/photo_2023-09-27_15-35-25.jpg",
+    likes: 141,
+    comments: 46,
+  },
+  {
+    url: "./test-arts/photo_2023-09-27_15-24-37.jpg",
+    likes: 141,
+    comments: 46,
+  },
+  {
+    url: "./test-arts/saitama.jpg",
+    likes: 141,
+    comments: 46,
+  },
+  {
+    url: "./test-arts/photo_2021-08-15_12-17-20.jpg",
+    likes: 141,
+    comments: 46,
+  },
+  {
+    url: "./test-arts/red.jpg",
+    likes: 141,
+    comments: 46,
+  },
+  {
+    url: "./test-arts/rage.png",
+    likes: 141,
+    comments: 46,
+  },
+  {
+    url: "./test-arts/batman.png",
+    likes: 141,
+    comments: 46,
+  },
+  {
+    url: "./test-arts/woman.png",
+    likes: 141,
+    comments: 46,
+  },
+  {
+    url: "./test-arts/photo_2023-09-27_15-35-25.jpg",
+    likes: 141,
+    comments: 46,
+  },
+  {
+    url: "./test-arts/photo_2023-09-27_15-24-37.jpg",
+    likes: 141,
+    comments: 46,
+  },
+  {
+    url: "./test-arts/saitama.jpg",
+    likes: 141,
+    comments: 46,
+  },
+  {
+    url: "./test-arts/photo_2021-08-15_12-17-20.jpg",
+    likes: 141,
+    comments: 46,
+  },
+  {
+    url: "./test-arts/red.jpg",
+    likes: 141,
+    comments: 46,
+  },
+  {
+    url: "./test-arts/rage.png",
+    likes: 141,
+    comments: 46,
+  },
+  {
+    url: "./test-arts/batman.png",
+    likes: 141,
+    comments: 46,
+  },
+  {
+    url: "./test-arts/woman.png",
+    likes: 141,
+    comments: 46,
+  },
+]);
 </script>
 
 <style lang='scss' scoped>

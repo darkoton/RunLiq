@@ -17,7 +17,7 @@
 <script setup lang="ts">
 import { defineProps, defineEmits, watch, ref } from "vue";
 import { DownloadOutlined, CloseOutlined } from "@ant-design/icons-vue";
-import { useStore } from "vuex";
+import { useStore } from "@/stores/store";
 
 const store = useStore();
 
@@ -47,15 +47,16 @@ watch(
 );
 
 function close() {
-  store.dispatch("onScroll");
+  store.onScroll();
   classEl.value = "close";
+
   setTimeout(() => {
     classEl.value = "";
   }, 400);
 }
 
 function open() {
-  store.dispatch("offScroll");
+  store.offScroll();
   classEl.value = "active";
 }
 </script>
