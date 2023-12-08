@@ -1,10 +1,5 @@
 <template>
   <header class="header">
-    <!-- <div
-      class="header__backward"
-      :class="{ active: burger }"
-      @click="burger = false"
-    ></div> -->
     <div class="header__wrapper">
       <div class="header__container _container">
         <div class="header__body">
@@ -70,53 +65,6 @@
           :isAuth="isAuth"
           @close="burgerOpen"
         />
-
-        <!-- <div class="header__body-mob" :class="{ active: burger }">
-          <div class="header__close" @click="burger = false">
-            <span></span><span></span>
-          </div>
-
-          <a-menu
-            v-model:selectedKeys="current"
-            mode="vertical"
-            class="header__nav-mob"
-          >
-            <a-menu-item
-              v-for="item in menu"
-              :key="item.key"
-              @click="
-                item.to();
-                burger = false;
-              "
-            >
-              <template #icon>
-                <component
-                  :is="item.icon"
-                  :style="{ color: item.iconColor }"
-                ></component>
-              </template>
-              {{ item.title }}
-            </a-menu-item>
-          </a-menu>
-          <span class="header__nav-link header__nav-token header__nav-item">
-            <span>LC: 235</span>
-          </span>
-          <div class="header__mob-user">
-            <a-button
-              type="dashed"
-              class="header__login"
-              v-if="!isAuth"
-              @click="isAuth = true"
-            >
-              <template #icon><UserOutlined /></template>
-              Login
-            </a-button>
-            <button class="header__google-auth" v-if="!isAuth">
-              <img src="@/assets/img/header/google-logo.svg" alt="" />
-              <span>Continue with Google account</span>
-            </button>
-          </div>
-        </div> -->
       </div>
     </div>
   </header>
