@@ -19,7 +19,7 @@
         :key="item.key"
         @click="
           item.to();
-          burger = false;
+          $emit('close');
         "
       >
         <template #icon>
@@ -28,7 +28,6 @@
             :style="{ color: item.iconColor }"
           ></component>
         </template>
-        {{ item.key }}
 
         {{ item.title }}
       </a-menu-item>
@@ -66,7 +65,6 @@ watch(
         ? route.matched[route.matched.length - 2].name
         : route.name,
     ];
-    console.log(current.value);
   }
 );
 </script>
@@ -82,7 +80,7 @@ watch(
       display: flex;
       align-items: center;
       @include adaptiv-value(column-gap, 10, 5, 1);
-      color: var(--character-title-85, rgba(0, 0, 0, 0.85));
+      color: var(--black);
       font-size: 14px;
       position: relative;
       line-height: 22px;
@@ -130,6 +128,8 @@ watch(
   }
   &__nav-mob {
     border-right: 0;
+    background: var(--burger-background);
+    color: var(--black);
   }
   &__run {
     & .header__icon {
@@ -177,12 +177,12 @@ watch(
     position: absolute;
     top: 0;
     left: -100vw;
-    background-color: #fff;
+    background-color: var(--burger-background);
     @include adaptiv-padding(20, 10, 20, 10, 1);
     z-index: 10;
     height: 100%;
     transition: all 0.5s ease 0s;
-    box-shadow: 0px 0 3px 1px #ccc;
+    box-shadow: 0px 0 3px 1px var(--lightGray);
     border-radius: 0 5px 5px 0;
 
     &.active {
@@ -197,6 +197,7 @@ watch(
     width: 25px;
     height: 25px;
     position: relative;
+    margin-bottom: 10px;
 
     span {
       position: absolute;
@@ -204,7 +205,7 @@ watch(
       left: 50%;
       width: 100%;
       height: 2px;
-      background-color: #000;
+      background-color: var(--black);
       border-radius: 10px;
       transform: translate(-50%, -50%);
 

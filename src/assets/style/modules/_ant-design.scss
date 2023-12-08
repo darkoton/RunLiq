@@ -77,3 +77,9 @@ textarea.ant-input, .ant-input-number, .ant-input, .ant-select-selector{
   color: var(--black);
   background: transparent !important;
 }
+.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected{
+  background: var(--bg-hover-drop-down);
+}
+.ant-menu-light .ant-menu-item:hover, .ant-menu-light .ant-menu-item-active, .ant-menu-light .ant-menu:not(.ant-menu-inline) .ant-menu-submenu-open, .ant-menu-light .ant-menu-submenu-active, .ant-menu-light .ant-menu-submenu-title:hover{
+  background: var(--bg-hover-drop-down);
+}

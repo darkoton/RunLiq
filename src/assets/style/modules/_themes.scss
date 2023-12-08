@@ -19,6 +19,8 @@
   --slider-color: var(--gray);
   --slider-rail:  #F5F5F5;
   --slider-track:  #91d5ff;
+  --slider-track:  #91d5ff;
+  --burger-background: #fff;
 }
 
 html.dark {
@@ -42,5 +44,5 @@ html.dark {
   --slider-color: #c9c9c9;
   --slider-rail: #494949;
   --slider-track:  #3eb2fa;
-
+  --burger-background: #111;
 }

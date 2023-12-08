@@ -1,15 +1,15 @@
 <template>
   <header class="header">
-    <div
+    <!-- <div
       class="header__backward"
       :class="{ active: burger }"
       @click="burger = false"
-    ></div>
+    ></div> -->
     <div class="header__wrapper">
       <div class="header__container _container">
         <div class="header__body">
           <div class="header__left">
-            <div class="header__burger" @click="burger = true">
+            <div class="header__burger" @click="burgerOpen">
               <span></span><span></span><span></span>
             </div>
             <router-link :to="'/'" class="header__logo">
@@ -64,7 +64,14 @@
           </div>
         </div>
 
-        <div class="header__body-mob" :class="{ active: burger }">
+        <BurgerMenu
+          :menu="menu"
+          v-model="burger"
+          :isAuth="isAuth"
+          @close="burgerOpen"
+        />
+
+        <!-- <div class="header__body-mob" :class="{ active: burger }">
           <div class="header__close" @click="burger = false">
             <span></span><span></span>
           </div>
@@ -109,13 +116,15 @@
               <span>Continue with Google account</span>
             </button>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </header>
 </template>
 
 <script setup>
+import { useRouter, useRoute } from "vue-router";
+import { ref, watch } from "vue";
 import {
   RocketOutlined,
   HomeOutlined,
@@ -124,9 +133,11 @@ import {
 } from "@ant-design/icons-vue";
 
 import UserMenu from "@/components/header/TheUserMenu.vue";
-import { useRouter, useRoute } from "vue-router";
-import { ref, watch } from "vue";
+import BurgerMenu from "@/components/header/TheBurgerMenu.vue";
 
+import { useStore } from "@/stores/store.ts";
+
+const store = useStore();
 const route = useRoute();
 const router = useRouter();
 
@@ -137,7 +148,7 @@ const isAuth = ref(true);
 const menu = ref([
   {
     title: "New Run",
-    key: "run",
+    key: "make",
     icon: RocketOutlined,
     to: () => router.push("/make"),
     iconColor: "#1890FF",
@@ -168,6 +179,16 @@ watch(
     ];
   }
 );
+
+function burgerOpen() {
+  burger.value = !burger.value;
+
+  if (burger.value) {
+    store.offScroll();
+  } else {
+    store.onScroll();
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -196,7 +217,7 @@ watch(
       width: 100%;
       height: 2.5px;
       border-radius: 1px;
-      background-color: #000;
+      background-color: var(--black);
     }
   }
   &__logo {
@@ -270,13 +291,7 @@ watch(
       color: var(--black);
     }
   }
-  &__nav-mob {
-    border-right: 0;
-  }
 
-  & .header__nav-token {
-    // margin: 15px 0;
-  }
   &__run {
     & .header__icon {
       color: #1890ff;
@@ -325,77 +340,6 @@ watch(
     }
   }
 
-  &__body-mob {
-    display: none;
-    flex-direction: column;
-    width: 300px;
-    position: absolute;
-    top: 0;
-    left: -100vw;
-    background-color: #fff;
-    @include adaptiv-padding(20, 10, 20, 10, 1);
-    z-index: 10;
-    height: 100%;
-    transition: all 0.5s ease 0s;
-    box-shadow: 0px 0 3px 1px #ccc;
-    border-radius: 0 5px 5px 0;
-
-    &.active {
-      left: 0;
-    }
-
-    & .header__google-auth {
-      @include adaptiv-value(margin-top, 20, 10, 1);
-    }
-  }
-  &__close {
-    width: 25px;
-    height: 25px;
-    position: relative;
-
-    span {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 100%;
-      height: 2px;
-      background-color: #000;
-      border-radius: 10px;
-      transform: translate(-50%, -50%);
-
-      &:first-child {
-        transform: translate(-50%, -50%) rotate(45deg);
-      }
-      &:last-child {
-        transform: translate(-50%, -50%) rotate(-45deg);
-      }
-    }
-  }
-  &__backward {
-    position: fixed;
-    z-index: -2;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    transition: all 0.4s ease 0s;
-    opacity: 0;
-    display: none;
-
-    &.active {
-      z-index: 10;
-      opacity: 1;
-    }
-  }
-  &__mob-user {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    & button {
-      width: 100%;
-    }
-  }
   @media screen and (max-width: 770px) {
     &__body-mob {
       display: flex;

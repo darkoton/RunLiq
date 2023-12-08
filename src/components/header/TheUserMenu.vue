@@ -1,8 +1,9 @@
 <template>
   <a-dropdown class="header__dropdown" v-model:visible="userMenu">
     <a class="header__user ant-dropdown-link" @click.prevent
-      ><UserOutlined /> Aleksandr Schastlivyi</a
-    >
+      ><UserOutlined />
+      <span class="header__username">Aleksandr Schastlivyi</span>
+    </a>
     <template #overlay>
       <a-menu>
         <a-menu-item key="profile" @click="router.push('/profile')">
@@ -85,6 +86,15 @@ const userSettings = ref({
   }
   &__menu-user-switch {
     @include adaptiv-value(margin-left, 15, 10, 1);
+  }
+
+  @media (max-width: 400px) {
+    &__username {
+      display: none;
+    }
+    &__user {
+      font-size: 20px;
+    }
   }
 }
 </style>
