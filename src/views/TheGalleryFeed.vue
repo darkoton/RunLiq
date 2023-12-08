@@ -92,7 +92,7 @@ const items = [
       avatar: "/avatar.png",
     },
     date: new Date("2023-11-13"),
-    url: "/test arts/dream_TradingCard (1).jpg",
+    url: "/test-arts/dream_TradingCard (1).jpg",
   },
   {
     title: "test 2",
@@ -103,7 +103,7 @@ const items = [
       avatar: "/avatar.png",
     },
     date: new Date("2023-11-16"),
-    url: "/test arts/dream_TradingCard.jpg",
+    url: "/test-arts/dream_TradingCard.jpg",
   },
   {
     title: "test 3",
@@ -114,7 +114,7 @@ const items = [
       avatar: "/avatar.png",
     },
     date: new Date("2023-11-16"),
-    url: "/test arts/final.jpg",
+    url: "/test-arts/final.jpg",
   },
   {
     title: "test 4",
@@ -125,7 +125,7 @@ const items = [
       avatar: "/avatar.png",
     },
     date: new Date("2023-11-16"),
-    url: "/test arts/saitama.jpg",
+    url: "/test-arts/saitama.jpg",
   },
   {
     title: "test 5",
@@ -136,7 +136,7 @@ const items = [
       avatar: "/avatar.png",
     },
     date: new Date("2023-11-16"),
-    url: "/test arts/185as7578879094j5hjsy6a674ajd897.jpg",
+    url: "/test-arts/185as7578879094j5hjsy6a674ajd897.jpg",
   },
   {
     title: "test 7",
@@ -147,7 +147,7 @@ const items = [
       avatar: "/avatar.png",
     },
     date: new Date("2023-11-16"),
-    url: "/test arts/cropped-1920-1080-957926.png",
+    url: "/test-arts/cropped-1920-1080-957926.png",
   },
   {
     title: "test 6",
@@ -158,7 +158,7 @@ const items = [
       avatar: "/avatar.png",
     },
     date: new Date("2023-11-16"),
-    url: "/test arts/dream_TradingCard (3).jpg",
+    url: "/test-arts/dream_TradingCard (3).jpg",
   },
   {
     title: "knight epic",
@@ -169,7 +169,7 @@ const items = [
       avatar: "/avatar.png",
     },
     date: new Date("2023-11-16"),
-    url: "/test arts/knight epic.png",
+    url: "/test-arts/knight epic.png",
   },
   {
     title: "knight",
@@ -180,7 +180,7 @@ const items = [
       avatar: "/avatar.png",
     },
     date: new Date("2023-11-16"),
-    url: "/test arts/knight.png",
+    url: "/test-arts/knight.png",
   },
   {
     title: "rage",
@@ -191,7 +191,7 @@ const items = [
       avatar: "/avatar.png",
     },
     date: new Date("2023-11-16"),
-    url: "/test arts/rage.jpg",
+    url: "/test-arts/rage.jpg",
   },
 ];
 
