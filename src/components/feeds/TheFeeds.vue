@@ -35,6 +35,7 @@
             :class="{
               select: store.selectValue.findIndex((el) => el.id == index) > -1,
             }"
+            :menu="menu"
           >
             <span class="select-order">{{
               store.selectValue.indexOf(index) + 1
@@ -83,6 +84,10 @@ const props = defineProps({
     default: () => {
       return { width: 250, height: 250 };
     },
+  },
+  menu: {
+    type: Boolean,
+    default: false,
   },
 });
 

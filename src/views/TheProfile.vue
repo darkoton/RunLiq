@@ -24,6 +24,7 @@
               :type="'rating'"
               :data="arts[select]"
               :sizes="{ width: 215, height: 250 }"
+              :menu="true"
               class="profile__feed"
             />
           </div>

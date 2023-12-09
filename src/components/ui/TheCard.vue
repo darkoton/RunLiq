@@ -9,6 +9,34 @@
     <div class="card__body">
       <slot />
       <div class="card__img">
+        <a-dropdown
+          :trigger="['click']"
+          placement="bottomRight"
+          class="card__menu"
+          v-if="menu"
+        >
+          <a class="card__menu-button" @click.prevent>
+            <span></span>
+            <span></span>
+            <span></span>
+          </a>
+          <template #overlay>
+            <a-menu>
+              <a-menu-item key="0">
+                <a :href="data.url" download class="ant-dropdown-link"
+                  >Download</a
+                >
+              </a-menu-item>
+              <a-menu-item key="1">
+                <a href="#">Report</a>
+              </a-menu-item>
+              <a-menu-item key="2">
+                <a href="#">Remove</a>
+              </a-menu-item>
+            </a-menu>
+          </template>
+        </a-dropdown>
+
         <img :src="data.url" alt="art" @click="preview" />
       </div>
 
@@ -57,6 +85,10 @@ defineProps({
     default: () => {
       return { width: 250, height: 250 };
     },
+  },
+  menu: {
+    type: Boolean,
+    default: false,
   },
 });
 
@@ -189,6 +221,49 @@ function preview(event) {
       &:active {
         color: rgb(197, 16, 16);
       }
+    }
+  }
+
+  //dots menu
+  &__menu-button {
+    z-index: -1;
+    opacity: 0;
+    position: absolute;
+    padding: 0 10px;
+    top: 10px;
+    right: 8px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 3.5px;
+    transition: all 0.3s ease 0s;
+
+    &.ant-dropdown-open {
+      z-index: 0;
+      opacity: 1;
+    }
+
+    span {
+      width: 3px;
+      height: 3px;
+      background-color: #fff;
+    }
+  }
+
+  @media (any-hover: hover) {
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    &:hover {
+      & .card__menu-button {
+        z-index: 0;
+        opacity: 1;
+      }
+    }
+  }
+
+  @media only screen and (hover: none) {
+    &__menu-button {
+      opacity: 1;
+      z-index: 0;
     }
   }
 
