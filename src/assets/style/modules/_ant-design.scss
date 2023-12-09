@@ -1,7 +1,9 @@
 .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-item, .ant-menu-horizontal:not(.ant-menu-dark) > .ant-menu-submenu{
   // @include adaptiv-padding(0, 0, 20, 10, 1);
 }
-
+.ant-menu-horizontal{
+    background:transparent;
+}
 .ant-dropdown-menu{
   padding: 0;
   background-color: var(--bg-drop-down);
@@ -79,6 +81,10 @@ textarea.ant-input, .ant-input-number, .ant-input, .ant-select-selector{
 }
 .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected{
   background: var(--bg-hover-drop-down);
+}
+.ant-menu{
+  color: var(--black);
+  border-color: var(--ant-border);
 }
 .ant-menu-light .ant-menu-item:hover, .ant-menu-light .ant-menu-item-active, .ant-menu-light .ant-menu:not(.ant-menu-inline) .ant-menu-submenu-open, .ant-menu-light .ant-menu-submenu-active, .ant-menu-light .ant-menu-submenu-title:hover{
   background: var(--bg-hover-drop-down);
