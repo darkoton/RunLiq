@@ -149,7 +149,7 @@ function select(data) {
     // grid-template-columns: repeat(auto-fit, minmax(200px, 250px));
     // grid-template-rows: repeat(auto-fit, minmax(250px, 300px));
     justify-content: center;
-    @include adaptiv-value(gap, 25, 20, 1);
+    @include adaptiv-value(gap, 15, 5, 1);
     max-height: 630px;
     overflow: auto;
     @include scrollbars(12px, #bfbfbf, var(--ant-border), 10px);

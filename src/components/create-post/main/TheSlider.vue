@@ -103,7 +103,7 @@ function onSwiper(swiper) {
     justify-content: center;
     color: var(--gray);
     border-radius: 2px;
-    border: 2px dashed var(--darkGray);
+    border: 2px dashed var(--blackGray);
     background: var(--lightGray);
     padding: 20px;
   }

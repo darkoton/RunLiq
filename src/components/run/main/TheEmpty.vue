@@ -14,7 +14,7 @@
 .empty {
   border-radius: 5px;
   flex: 1 1 auto;
-  border: 2px dashed var(--darkGray);
+  border: 2px dashed var(--blackGray);
   max-height: 593px;
   min-height: 300px;
   &__body {

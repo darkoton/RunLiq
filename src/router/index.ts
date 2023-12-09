@@ -32,6 +32,11 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '@/views/TheCreatePost.vue'),
   },
   {
+    path: '/profile',
+    name: 'profile',
+    component: () => import(/* webpackChunkName: "about" */ '@/views/TheProfile.vue'),
+  },
+  {
     path: '/privacy-policy',
     name: 'privacy policy',
     component: () => import(/* webpackChunkName: "about" */ '@/views/ThePrivacyPolicy.vue'),

@@ -82,14 +82,13 @@ function preview(event) {
   &__body,
   &__img {
     height: 100%;
+    width: 100%;
   }
 
   &__img {
     border-radius: 12px;
     overflow: hidden;
-    width: 250px;
     position: relative;
-    // height: 250px;
     img {
       width: 100%;
       height: 100%;
