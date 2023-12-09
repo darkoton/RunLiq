@@ -19,13 +19,13 @@
                 </span>
               </a-menu-item>
             </a-menu>
-
             <Feed
               :type="'rating'"
               :data="arts[select]"
               :sizes="{ width: 215, height: 250 }"
               :menu="true"
               class="profile__feed"
+              :slider="select == 'posts' ? true : false"
             />
           </div>
         </div>
@@ -65,88 +65,168 @@ const current = ref(["Posts"]);
 const arts = ref({
   posts: [
     {
-      url: "./test-arts/photo_2023-09-27_15-24-37.jpg",
+      urls: [
+        "./test-arts/photo_2023-09-27_15-24-37.jpg",
+        "./test-arts/photo_2023-09-27_15-35-25.jpg",
+        "./test-arts/photo_2021-08-15_12-17-20.jpg",
+        "./test-arts/saitama.jpg",
+      ],
       likes: 141,
       comments: 46,
     },
     {
-      url: "./test-arts/photo_2023-09-27_15-35-25.jpg",
-      likes: 141,
-      comments: 46,
-    },
-
-    {
-      url: "./test-arts/photo_2021-08-15_12-17-20.jpg",
-      likes: 141,
-      comments: 46,
-    },
-    {
-      url: "./test-arts/saitama.jpg",
-      likes: 141,
-      comments: 46,
-    },
-
-    {
-      url: "./test-arts/rage.png",
-      likes: 141,
-      comments: 46,
-    },
-    {
-      url: "./test-arts/batman.png",
-      likes: 141,
-      comments: 46,
-    },
-    {
-      url: "./test-arts/red.jpg",
+      urls: [
+        "./test-arts/rage.jpg",
+        "./test-arts/photo_2023-09-27_15-35-25.jpg",
+        "./test-arts/photo_2021-08-15_12-17-20.jpg",
+        "./test-arts/saitama.jpg",
+      ],
       likes: 141,
       comments: 46,
     },
 
     {
-      url: "./test-arts/photo_2023-09-27_15-35-25.jpg",
+      urls: [
+        "./test-arts/rage.png",
+        "./test-arts/photo_2023-09-27_15-35-25.jpg",
+        "./test-arts/photo_2021-08-15_12-17-20.jpg",
+        "./test-arts/saitama.jpg",
+      ],
       likes: 141,
       comments: 46,
     },
     {
-      url: "./test-arts/woman.png",
-      likes: 141,
-      comments: 46,
-    },
-
-    {
-      url: "./test-arts/saitama.jpg",
-      likes: 141,
-      comments: 46,
-    },
-    {
-      url: "./test-arts/photo_2023-09-27_15-24-37.jpg",
-      likes: 141,
-      comments: 46,
-    },
-
-    {
-      url: "./test-arts/red.jpg",
-      likes: 141,
-      comments: 46,
-    },
-    {
-      url: "./test-arts/photo_2021-08-15_12-17-20.jpg",
+      urls: [
+        "./test-arts/batman.png",
+        "./test-arts/photo_2023-09-27_15-35-25.jpg",
+        "./test-arts/photo_2021-08-15_12-17-20.jpg",
+        "./test-arts/saitama.jpg",
+      ],
       likes: 141,
       comments: 46,
     },
 
     {
-      url: "./test-arts/batman.png",
+      urls: [
+        "./test-arts/woman.png",
+        "./test-arts/photo_2023-09-27_15-35-25.jpg",
+        "./test-arts/photo_2021-08-15_12-17-20.jpg",
+        "./test-arts/saitama.jpg",
+      ],
       likes: 141,
       comments: 46,
     },
     {
-      url: "./test-arts/rage.png",
+      urls: [
+        "./test-arts/photo_2021-08-15_12-17-20.jpg",
+        "./test-arts/photo_2023-09-27_15-35-25.jpg",
+        "./test-arts/photo_2021-08-15_12-17-20.jpg",
+        "./test-arts/saitama.jpg",
+      ],
       likes: 141,
       comments: 46,
     },
     {
-      url: "./test-arts/woman.png",
+      urls: [
+        "./test-arts/final.jpg",
+        "./test-arts/photo_2023-09-27_15-35-25.jpg",
+        "./test-arts/photo_2021-08-15_12-17-20.jpg",
+        "./test-arts/saitama.jpg",
+      ],
+      likes: 141,
+      comments: 46,
+    },
+
+    {
+      urls: [
+        "./test-arts/fire.png",
+        "./test-arts/photo_2023-09-27_15-35-25.jpg",
+        "./test-arts/photo_2021-08-15_12-17-20.jpg",
+        "./test-arts/saitama.jpg",
+      ],
+      likes: 141,
+      comments: 46,
+    },
+    {
+      urls: [
+        "./test-arts/red.jpg",
+        "./test-arts/photo_2023-09-27_15-35-25.jpg",
+        "./test-arts/photo_2021-08-15_12-17-20.jpg",
+        "./test-arts/saitama.jpg",
+      ],
+      likes: 141,
+      comments: 46,
+    },
+
+    {
+      urls: [
+        "./test-arts/knight epic.png",
+        "./test-arts/photo_2023-09-27_15-35-25.jpg",
+        "./test-arts/photo_2021-08-15_12-17-20.jpg",
+        "./test-arts/saitama.jpg",
+      ],
+      likes: 141,
+      comments: 46,
+    },
+    {
+      urls: [
+        "./test-arts/knight.png",
+        "./test-arts/photo_2023-09-27_15-35-25.jpg",
+        "./test-arts/photo_2021-08-15_12-17-20.jpg",
+        "./test-arts/saitama.jpg",
+      ],
+      likes: 141,
+      comments: 46,
+    },
+
+    {
+      urls: [
+        "./test-arts/cropped-1920-1080-957926.png",
+        "./test-arts/photo_2023-09-27_15-35-25.jpg",
+        "./test-arts/photo_2021-08-15_12-17-20.jpg",
+        "./test-arts/saitama.jpg",
+      ],
+      likes: 141,
+      comments: 46,
+    },
+    {
+      urls: [
+        "./test-arts/dream_TradingCard (3).jpg",
+        "./test-arts/photo_2023-09-27_15-35-25.jpg",
+        "./test-arts/photo_2021-08-15_12-17-20.jpg",
+        "./test-arts/saitama.jpg",
+      ],
+      likes: 141,
+      comments: 46,
+    },
+
+    {
+      urls: [
+        "./test-arts/dream_TradingCard (1).jpg",
+        "./test-arts/photo_2023-09-27_15-35-25.jpg",
+        "./test-arts/photo_2021-08-15_12-17-20.jpg",
+        "./test-arts/saitama.jpg",
+      ],
+      likes: 141,
+      comments: 46,
+    },
+    {
+      urls: [
+        "./test-arts/dream_TradingCard (1).jpg",
+        "./test-arts/photo_2023-09-27_15-35-25.jpg",
+        "./test-arts/photo_2021-08-15_12-17-20.jpg",
+        "./test-arts/saitama.jpg",
+      ],
+      likes: 141,
+      comments: 46,
+    },
+    {
+      urls: [
+        "./test-arts/dream_TradingCard.jpg",
+        "./test-arts/photo_2023-09-27_15-35-25.jpg",
+        "./test-arts/photo_2021-08-15_12-17-20.jpg",
+        "./test-arts/saitama.jpg",
+      ],
       likes: 141,
       comments: 46,
     },

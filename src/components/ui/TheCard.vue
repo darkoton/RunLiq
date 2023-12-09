@@ -5,6 +5,8 @@
       width: sizes.width + 'px',
       height: sizes.height + 'px',
     }"
+    @mouseover="slider ? startSwiper() : ''"
+    @mouseleave="slider ? stopSwiper() : ''"
   >
     <div class="card__body">
       <slot />
@@ -37,7 +39,24 @@
           </template>
         </a-dropdown>
 
-        <img :src="data.url" alt="art" @click="preview" />
+        <img :src="data.url" alt="art" @click="preview" v-if="!slider" />
+
+        <swiper
+          :modules="[EffectFade, Autoplay]"
+          :effect="'fade'"
+          :autoplay="{
+            delay: 1000,
+            disableOnInteraction: false,
+          }"
+          :disableOnInteraction="false"
+          class="card__slider"
+          @swiper="onSwiper"
+          v-else
+        >
+          <swiper-slide v-for="img in data.urls" :key="img">
+            <img :src="img" alt="" class="card__slider-img"
+          /></swiper-slide>
+        </swiper>
       </div>
 
       <div class="card__rating-panel rating-panel" v-if="type == 'rating'">
@@ -61,13 +80,17 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, defineEmits } from "vue";
+import { ref, defineProps, defineEmits } from "vue";
 import {
   MessageOutlined,
   LikeFilled,
   LikeOutlined,
   DislikeOutlined,
 } from "@ant-design/icons-vue";
+import { Swiper, SwiperSlide } from "swiper/vue";
+import "swiper/css";
+import "swiper/css/effect-fade";
+import { EffectFade, Autoplay } from "swiper/modules";
 
 defineProps({
   data: {
@@ -90,12 +113,34 @@ defineProps({
     type: Boolean,
     default: false,
   },
+  slider: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 const emit = defineEmits(["preview"]);
 
 function preview(event) {
   emit("preview", event.target);
+}
+
+const swiperSlider = ref();
+
+function onSwiper(swiper) {
+  swiper.autoplay.stop();
+  swiperSlider.value = swiper;
+}
+
+function stopSwiper() {
+  if (swiperSlider.value.autoplay.running) {
+    swiperSlider.value.autoplay.stop();
+  }
+}
+function startSwiper() {
+  if (!swiperSlider.value.autoplay.running) {
+    swiperSlider.value.autoplay.start();
+  }
 }
 </script>
 
@@ -143,6 +188,7 @@ function preview(event) {
     @include adaptiv-value(column-gap, 12, 6, 1);
     right: 10px;
     bottom: -50%;
+    z-index: 2;
     transition: all 0.4s ease 0s;
     border-radius: 15px;
     backdrop-filter: blur(2px);
@@ -238,7 +284,7 @@ function preview(event) {
     transition: all 0.3s ease 0s;
 
     &.ant-dropdown-open {
-      z-index: 0;
+      z-index: 5;
       opacity: 1;
     }
 
@@ -254,7 +300,7 @@ function preview(event) {
     transition: all 0.3s ease 0s;
     &:hover {
       & .card__menu-button {
-        z-index: 0;
+        z-index: 5;
         opacity: 1;
       }
     }
@@ -263,8 +309,11 @@ function preview(event) {
   @media only screen and (hover: none) {
     &__menu-button {
       opacity: 1;
-      z-index: 0;
+      z-index: 5;
     }
+  }
+  &__slider {
+    height: 100%;
   }
 
   &.select {
