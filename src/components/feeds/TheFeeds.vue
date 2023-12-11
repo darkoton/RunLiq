@@ -31,7 +31,13 @@
             :type="type == 'select' ? 'default' : type"
             :sizes="sizes"
             @preview="preview"
-            @click="type == 'select' ? select({ src: art.url, id: index }) : ''"
+            @click="
+              routerLink
+                ? goPost(index)
+                : type == 'select'
+                ? select({ src: art.url, id: index })
+                : ''
+            "
             :class="{
               select: store.selectValue.findIndex((el) => el.id == index) > -1,
             }"
@@ -54,10 +60,12 @@
 
 <script setup>
 import { ref, defineProps } from "vue";
+import { useRouter } from "vue-router";
 import TheCard from "@/components/ui/TheCard.vue";
 import ThePreview from "@/components/ui/ThePreview.vue";
 import { usePostCreateStore } from "@/stores/create-post";
 
+const router = useRouter();
 const store = usePostCreateStore();
 const props = defineProps({
   title: {
@@ -94,6 +102,10 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  routerLink: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 const previewData = ref({
@@ -119,12 +131,13 @@ function select(data) {
       1
     );
 
-    console.log(store.selectValue);
-
     return;
   }
   store.selectValue.push(data);
-  console.log(store.selectValue);
+}
+
+function goPost(index) {
+  router.push(`/p/${index}`);
 }
 </script>
 

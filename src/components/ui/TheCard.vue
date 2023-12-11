@@ -62,12 +62,12 @@
       <div class="card__rating-panel rating-panel" v-if="type == 'rating'">
         <span class="rating-panel__item rating-panel__comments">
           <MessageOutlined />
-          <span class="comments-count">{{ data.comments }}</span>
+          <span class="comments-count">{{ data.commentsCount }}</span>
         </span>
 
         <span class="rating-panel__item rating-panel__likes">
           <LikeFilled />
-          <span class="likes-count">{{ data.likes }}</span>
+          <span class="likes-count">{{ data.likesCount }}</span>
         </span>
       </div>
 

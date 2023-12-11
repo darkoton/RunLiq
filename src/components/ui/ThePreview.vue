@@ -1,6 +1,6 @@
 <template>
-  <div class="preview" :class="[classEl]" @click="$emit('close')">
-    <div class="preview__bg"></div>
+  <div class="preview" :class="[classEl]">
+    <div class="preview__bg" @click="$emit('close')"></div>
     <div class="preview__actions">
       <a :href="urlImg" download=""><DownloadOutlined /></a>
       <button>

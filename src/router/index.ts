@@ -4,46 +4,49 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: () => import(/* webpackChunkName: "about" */ '@/views/TheHome.vue')
+    component: () => import('@/views/TheHome.vue')
   },
   {
     path: '/make',
     name: 'make',
-    component: () => import(/* webpackChunkName: "about" */ '@/views/TheRun.vue')
+    component: () => import('@/views/TheRun.vue')
   },
   {
     path: '/gallery',
     name: 'gallery',
-    component: () => import(/* webpackChunkName: "about" */ '@/views/TheGallery.vue'),
+    component: () => import('@/views/TheGallery.vue'),
     redirect: "/gallery/daily",
     children: [
       {
-        // UserProfile will be rendered inside User's <router-view>
-        // when /user/:id/profile is matched
         name: "gallery sort",
         path: '/gallery/:sort',
-        component: () => import(/* webpackChunkName: "about" */ '@/views/TheGalleryFeed.vue'),
+        component: () => import('@/views/TheGalleryFeed.vue'),
       },
     ],
   },
   {
     path: '/post-create',
     name: 'post create',
-    component: () => import(/* webpackChunkName: "about" */ '@/views/TheCreatePost.vue'),
+    component: () => import('@/views/TheCreatePost.vue'),
   },
   {
     path: '/profile',
     name: 'profile',
-    component: () => import(/* webpackChunkName: "about" */ '@/views/TheProfile.vue'),
+    component: () => import('@/views/TheProfile.vue'),
+  },
+  {
+    path: '/p/:title',
+    name: 'post',
+    component: () => import('@/views/ThePost.vue'),
   },
   {
     path: '/privacy-policy',
     name: 'privacy policy',
-    component: () => import(/* webpackChunkName: "about" */ '@/views/ThePrivacyPolicy.vue'),
+    component: () => import('@/views/ThePrivacyPolicy.vue'),
   },
   {
     path: "/:pathMatch(.*)",
-    component: () => import(/* webpackChunkName: "about" */ '@/views/TheNotFound.vue')
+    component: () => import('@/views/TheNotFound.vue')
   }
 ]
 

@@ -89,3 +89,10 @@ textarea.ant-input, .ant-input-number, .ant-input, .ant-select-selector{
 .ant-menu-light .ant-menu-item:hover, .ant-menu-light .ant-menu-item-active, .ant-menu-light .ant-menu:not(.ant-menu-inline) .ant-menu-submenu-open, .ant-menu-light .ant-menu-submenu-active, .ant-menu-light .ant-menu-submenu-title:hover{
   background: var(--bg-hover-drop-down);
 }
+
+.ant-tabs-top > .ant-tabs-nav::before, .ant-tabs-bottom > .ant-tabs-nav::before, .ant-tabs-top > div > .ant-tabs-nav::before, .ant-tabs-bottom > div > .ant-tabs-nav::before{
+  border-color: var(--ant-border);
+}
+.ant-tabs{
+  color: var(--black);
+}

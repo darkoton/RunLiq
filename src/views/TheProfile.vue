@@ -26,6 +26,7 @@
               :menu="true"
               class="profile__feed"
               :slider="select == 'posts' ? true : false"
+              :routerLink="true"
             />
           </div>
         </div>
@@ -71,8 +72,27 @@ const arts = ref({
         "./test-arts/photo_2021-08-15_12-17-20.jpg",
         "./test-arts/saitama.jpg",
       ],
-      likes: 141,
-      comments: 46,
+      likesCount: 141,
+      commentsCount: 46,
+      user: {
+        avatar: "./avatar.png",
+      },
+      description:
+        "Lorem ipsum dolor sit amet, vince adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Текст",
+      comments: [
+        {
+          username: "Aleksandr Schastlivyi",
+          avatar: "./avatar.png",
+          message: "We supply a series of design principles",
+          reply: [
+            {
+              username: "Aleksandr Schastlivyi",
+              avatar: "./avatar.png",
+              message: "reply We supply a series of design principles",
+            },
+          ],
+        },
+      ],
     },
     {
       urls: [
@@ -81,8 +101,8 @@ const arts = ref({
         "./test-arts/photo_2021-08-15_12-17-20.jpg",
         "./test-arts/saitama.jpg",
       ],
-      likes: 141,
-      comments: 46,
+      likesCount: 141,
+      commentsCount: 46,
     },
 
     {
@@ -92,8 +112,8 @@ const arts = ref({
         "./test-arts/photo_2021-08-15_12-17-20.jpg",
         "./test-arts/saitama.jpg",
       ],
-      likes: 141,
-      comments: 46,
+      likesCount: 141,
+      commentsCount: 46,
     },
     {
       urls: [
@@ -102,8 +122,8 @@ const arts = ref({
         "./test-arts/photo_2021-08-15_12-17-20.jpg",
         "./test-arts/saitama.jpg",
       ],
-      likes: 141,
-      comments: 46,
+      likesCount: 141,
+      commentsCount: 46,
     },
 
     {
@@ -113,8 +133,8 @@ const arts = ref({
         "./test-arts/photo_2021-08-15_12-17-20.jpg",
         "./test-arts/saitama.jpg",
       ],
-      likes: 141,
-      comments: 46,
+      likesCount: 141,
+      commentsCount: 46,
     },
     {
       urls: [
@@ -123,8 +143,8 @@ const arts = ref({
         "./test-arts/photo_2021-08-15_12-17-20.jpg",
         "./test-arts/saitama.jpg",
       ],
-      likes: 141,
-      comments: 46,
+      likesCount: 141,
+      commentsCount: 46,
     },
     {
       urls: [
@@ -133,8 +153,8 @@ const arts = ref({
         "./test-arts/photo_2021-08-15_12-17-20.jpg",
         "./test-arts/saitama.jpg",
       ],
-      likes: 141,
-      comments: 46,
+      likesCount: 141,
+      commentsCount: 46,
     },
 
     {
@@ -144,8 +164,8 @@ const arts = ref({
         "./test-arts/photo_2021-08-15_12-17-20.jpg",
         "./test-arts/saitama.jpg",
       ],
-      likes: 141,
-      comments: 46,
+      likesCount: 141,
+      commentsCount: 46,
     },
     {
       urls: [
@@ -154,8 +174,8 @@ const arts = ref({
         "./test-arts/photo_2021-08-15_12-17-20.jpg",
         "./test-arts/saitama.jpg",
       ],
-      likes: 141,
-      comments: 46,
+      likesCount: 141,
+      commentsCount: 46,
     },
 
     {
@@ -165,8 +185,8 @@ const arts = ref({
         "./test-arts/photo_2021-08-15_12-17-20.jpg",
         "./test-arts/saitama.jpg",
       ],
-      likes: 141,
-      comments: 46,
+      likesCount: 141,
+      commentsCount: 46,
     },
     {
       urls: [
@@ -175,8 +195,8 @@ const arts = ref({
         "./test-arts/photo_2021-08-15_12-17-20.jpg",
         "./test-arts/saitama.jpg",
       ],
-      likes: 141,
-      comments: 46,
+      likesCount: 141,
+      commentsCount: 46,
     },
 
     {
@@ -186,8 +206,8 @@ const arts = ref({
         "./test-arts/photo_2021-08-15_12-17-20.jpg",
         "./test-arts/saitama.jpg",
       ],
-      likes: 141,
-      comments: 46,
+      likesCount: 141,
+      commentsCount: 46,
     },
     {
       urls: [
@@ -196,8 +216,8 @@ const arts = ref({
         "./test-arts/photo_2021-08-15_12-17-20.jpg",
         "./test-arts/saitama.jpg",
       ],
-      likes: 141,
-      comments: 46,
+      likesCount: 141,
+      commentsCount: 46,
     },
 
     {
@@ -207,8 +227,8 @@ const arts = ref({
         "./test-arts/photo_2021-08-15_12-17-20.jpg",
         "./test-arts/saitama.jpg",
       ],
-      likes: 141,
-      comments: 46,
+      likesCount: 141,
+      commentsCount: 46,
     },
     {
       urls: [
@@ -217,8 +237,8 @@ const arts = ref({
         "./test-arts/photo_2021-08-15_12-17-20.jpg",
         "./test-arts/saitama.jpg",
       ],
-      likes: 141,
-      comments: 46,
+      likesCount: 141,
+      commentsCount: 46,
     },
     {
       urls: [
@@ -227,90 +247,90 @@ const arts = ref({
         "./test-arts/photo_2021-08-15_12-17-20.jpg",
         "./test-arts/saitama.jpg",
       ],
-      likes: 141,
-      comments: 46,
+      likesCount: 141,
+      commentsCount: 46,
     },
   ],
   history: [
     {
       url: "./test-arts/photo_2023-09-27_15-35-25.jpg",
-      likes: 141,
-      comments: 46,
+      likesCount: 141,
+      commentsCount: 46,
     },
     {
       url: "./test-arts/photo_2023-09-27_15-24-37.jpg",
-      likes: 141,
-      comments: 46,
+      likesCount: 141,
+      commentsCount: 46,
     },
     {
       url: "./test-arts/saitama.jpg",
-      likes: 141,
-      comments: 46,
+      likesCount: 141,
+      commentsCount: 46,
     },
     {
       url: "./test-arts/photo_2021-08-15_12-17-20.jpg",
-      likes: 141,
-      comments: 46,
+      likesCount: 141,
+      commentsCount: 46,
     },
     {
       url: "./test-arts/red.jpg",
-      likes: 141,
-      comments: 46,
+      likesCount: 141,
+      commentsCount: 46,
     },
     {
       url: "./test-arts/rage.png",
-      likes: 141,
-      comments: 46,
+      likesCount: 141,
+      commentsCount: 46,
     },
     {
       url: "./test-arts/batman.png",
-      likes: 141,
-      comments: 46,
+      likesCount: 141,
+      commentsCount: 46,
     },
     {
       url: "./test-arts/woman.png",
-      likes: 141,
-      comments: 46,
+      likesCount: 141,
+      commentsCount: 46,
     },
     {
       url: "./test-arts/photo_2023-09-27_15-35-25.jpg",
-      likes: 141,
-      comments: 46,
+      likesCount: 141,
+      commentsCount: 46,
     },
     {
       url: "./test-arts/photo_2023-09-27_15-24-37.jpg",
-      likes: 141,
-      comments: 46,
+      likesCount: 141,
+      commentsCount: 46,
     },
     {
       url: "./test-arts/saitama.jpg",
-      likes: 141,
-      comments: 46,
+      likesCount: 141,
+      commentsCount: 46,
     },
     {
       url: "./test-arts/photo_2021-08-15_12-17-20.jpg",
-      likes: 141,
-      comments: 46,
+      likesCount: 141,
+      commentsCount: 46,
     },
     {
       url: "./test-arts/red.jpg",
-      likes: 141,
-      comments: 46,
+      likesCount: 141,
+      commentsCount: 46,
     },
     {
       url: "./test-arts/rage.png",
-      likes: 141,
-      comments: 46,
+      likesCount: 141,
+      commentsCount: 46,
     },
     {
       url: "./test-arts/batman.png",
-      likes: 141,
-      comments: 46,
+      likesCount: 141,
+      commentsCount: 46,
     },
     {
       url: "./test-arts/woman.png",
-      likes: 141,
-      comments: 46,
+      likesCount: 141,
+      commentsCount: 46,
     },
   ],
 });

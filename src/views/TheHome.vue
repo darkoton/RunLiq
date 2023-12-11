@@ -25,43 +25,43 @@ import TheFeeds from "@/components/feeds/TheFeeds.vue";
 const arts = ref([
   {
     url: "./test-arts/photo_2023-09-27_15-35-25.jpg",
-    likes: 141,
-    comments: 46,
+    likesCount: 141,
+    commentsCount: 46,
   },
   {
     url: "./test-arts/photo_2023-09-27_15-24-37.jpg",
-    likes: 141,
-    comments: 46,
+    likesCount: 141,
+    commentsCount: 46,
   },
   {
     url: "./test-arts/saitama.jpg",
-    likes: 141,
-    comments: 46,
+    likesCount: 141,
+    commentsCount: 46,
   },
   {
     url: "./test-arts/photo_2021-08-15_12-17-20.jpg",
-    likes: 141,
-    comments: 46,
+    likesCount: 141,
+    commentsCount: 46,
   },
   {
     url: "./test-arts/red.jpg",
-    likes: 141,
-    comments: 46,
+    likesCount: 141,
+    commentsCount: 46,
   },
   {
     url: "./test-arts/rage.png",
-    likes: 141,
-    comments: 46,
+    likesCount: 141,
+    commentsCount: 46,
   },
   {
     url: "./test-arts/batman.png",
-    likes: 141,
-    comments: 46,
+    likesCount: 141,
+    commentsCount: 46,
   },
   {
     url: "./test-arts/woman.png",
-    likes: 141,
-    comments: 46,
+    likesCount: 141,
+    commentsCount: 46,
   },
 ]);
 </script>
