@@ -11,6 +11,7 @@
             type="select"
             :data="arts"
             :sizes="{ width: 250, height: 250 }"
+            :scroll="true"
           />
         </div>
       </div>

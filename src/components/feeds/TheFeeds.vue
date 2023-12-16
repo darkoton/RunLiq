@@ -23,6 +23,7 @@
               sizes.height - 50 + 'px'
             }, ${sizes.height + 'px'}))`,
           }"
+          :class="{ scroll: scroll }"
         >
           <TheCard
             v-for="(art, index) in data"
@@ -106,6 +107,10 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  scroll: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 const previewData = ref({
@@ -173,8 +178,6 @@ function goPost(index) {
     // grid-template-rows: repeat(auto-fit, minmax(250px, 300px));
     justify-content: center;
     @include adaptiv-value(gap, 15, 5, 1);
-    max-height: 630px;
-    overflow: auto;
     @include scrollbars(12px, #bfbfbf, var(--ant-border), 10px);
 
     &::-webkit-scrollbar-thumb {
@@ -182,6 +185,11 @@ function goPost(index) {
     }
     &::-webkit-scrollbar-track {
       border-radius: 10px;
+    }
+
+    &.scroll {
+      max-height: 630px;
+      overflow: auto;
     }
   }
   &__button {
