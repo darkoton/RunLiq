@@ -31,6 +31,9 @@ textarea.ant-input, .ant-input-number, .ant-input, .ant-select-selector{
 }
 .ant-input-textarea-show-count::after{
   color: var(--gray);
+  height: 22px;
+  display: flex;
+  align-items: center;
 }
 
 .ant-slider-mark-text{
@@ -86,13 +89,20 @@ textarea.ant-input, .ant-input-number, .ant-input, .ant-select-selector{
   color: var(--black);
   border-color: var(--ant-border);
 }
-.ant-menu-light .ant-menu-item:hover, .ant-menu-light .ant-menu-item-active, .ant-menu-light .ant-menu:not(.ant-menu-inline) .ant-menu-submenu-open, .ant-menu-light .ant-menu-submenu-active, .ant-menu-light .ant-menu-submenu-title:hover{
-  background: var(--bg-hover-drop-down);
-}
+// .ant-menu-light .ant-menu-item:hover, .ant-menu-light .ant-menu-item-active, .ant-menu-light .ant-menu:not(.ant-menu-inline) .ant-menu-submenu-open, .ant-menu-light .ant-menu-submenu-active, .ant-menu-light .ant-menu-submenu-title:hover{
+//   background: var(--bg-hover-drop-down);
+// }
 
 .ant-tabs-top > .ant-tabs-nav::before, .ant-tabs-bottom > .ant-tabs-nav::before, .ant-tabs-top > div > .ant-tabs-nav::before, .ant-tabs-bottom > div > .ant-tabs-nav::before{
   border-color: var(--ant-border);
 }
 .ant-tabs{
   color: var(--black);
+}
+.ant-menu-horizontal > .ant-menu-item::after, .ant-menu-horizontal > .ant-menu-submenu::after{
+  width: 100%;
+  left: 0;
+}
+.header__dropdown-menu .ant-dropdown-menu-item{
+  padding: 9px 12px;
 }

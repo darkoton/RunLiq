@@ -68,10 +68,10 @@ let swiperSlider = ref({
 });
 
 // const slides = ref([
-//   "./test-arts/rage.png",
-//   "./test-arts/knight.png",
-//   "./test-arts/rage.jpg",
-//   "./test-arts/saitama.jpg",
+//   "https://res.cloudinary.com/dk0jh3jqa/image/upload/v1702295240/Runliq/rage_hjh8c1.png",
+//   "https://res.cloudinary.com/dk0jh3jqa/image/upload/v1702295232/Runliq/knight_qhfm4i.png",
+//   "https://res.cloudinary.com/dk0jh3jqa/image/upload/v1702295238/Runliq/rage_mmcnyp.jpg",
+//   "https://res.cloudinary.com/dk0jh3jqa/image/upload/v1702295242/Runliq/saitama_lmwyoh.jpg",
 // ]);
 
 function onSwiper(swiper) {

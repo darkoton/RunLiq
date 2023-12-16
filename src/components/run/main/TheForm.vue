@@ -89,7 +89,6 @@
                 v-model:value="stepValue"
                 :marks="marks"
                 :step="1"
-                range
                 :tooltipVisible="false"
                 class="item__slider"
                 :max="22"
@@ -184,50 +183,50 @@ const models = ref([
   {
     id: 1,
     imgs: [
-      "./test-arts/fire.png",
-      "./test-arts/saitama.jpg",
-      "./test-arts/rage.jpg",
-      "./test-arts/photo_2023-09-27_15-24-37.jpg",
+      "https://res.cloudinary.com/dk0jh3jqa/image/upload/v1702295229/Runliq/fire_jyhezm.png",
+      "https://res.cloudinary.com/dk0jh3jqa/image/upload/v1702295242/Runliq/saitama_lmwyoh.jpg",
+      "https://res.cloudinary.com/dk0jh3jqa/image/upload/v1702295238/Runliq/rage_mmcnyp.jpg",
+      "https://res.cloudinary.com/dk0jh3jqa/image/upload/v1702295235/Runliq/photo_2023-09-27_15-24-37_vmyejl.jpg",
     ],
     title: "Absolute Reality",
   },
   {
     id: 2,
     imgs: [
-      "./test-arts/knight epic.png",
-      "./test-arts/knight.png",
-      "./test-arts/fire.png",
-      "./test-arts/dream_TradingCard (2).jpg",
+      "https://res.cloudinary.com/dk0jh3jqa/image/upload/v1702295231/Runliq/knight_epic_riljt0.png",
+      "https://res.cloudinary.com/dk0jh3jqa/image/upload/v1702295232/Runliq/knight_qhfm4i.png",
+      "https://res.cloudinary.com/dk0jh3jqa/image/upload/v1702295229/Runliq/fire_jyhezm.png",
+      "https://res.cloudinary.com/dk0jh3jqa/image/upload/v1702295223/Runliq/dream_TradingCard_2_mlla3s.jpg",
     ],
     title: "epiC Realism",
   },
   {
     id: 3,
     imgs: [
-      "./test-arts/fire.png",
-      "./test-arts/saitama.jpg",
-      "./test-arts/rage.jpg",
-      "./test-arts/photo_2023-09-27_15-24-37.jpg",
+      "https://res.cloudinary.com/dk0jh3jqa/image/upload/v1702295229/Runliq/fire_jyhezm.png",
+      "https://res.cloudinary.com/dk0jh3jqa/image/upload/v1702295242/Runliq/saitama_lmwyoh.jpg",
+      "https://res.cloudinary.com/dk0jh3jqa/image/upload/v1702295238/Runliq/rage_mmcnyp.jpg",
+      "https://res.cloudinary.com/dk0jh3jqa/image/upload/v1702295235/Runliq/photo_2023-09-27_15-24-37_vmyejl.jpg",
     ],
     title: "Flat 2D animerge",
   },
   {
     id: 4,
     imgs: [
-      "./test-arts/knight epic.png",
-      "./test-arts/knight.png",
-      "./test-arts/fire.png",
-      "./test-arts/dream_TradingCard (2).jpg",
+      "https://res.cloudinary.com/dk0jh3jqa/image/upload/v1702295231/Runliq/knight_epic_riljt0.png",
+      "https://res.cloudinary.com/dk0jh3jqa/image/upload/v1702295232/Runliq/knight_qhfm4i.png",
+      "https://res.cloudinary.com/dk0jh3jqa/image/upload/v1702295229/Runliq/fire_jyhezm.png",
+      "https://res.cloudinary.com/dk0jh3jqa/image/upload/v1702295223/Runliq/dream_TradingCard_2_mlla3s.jpg",
     ],
     title: "Absolute Reality",
   },
   {
     id: 5,
     imgs: [
-      "./test-arts/fire.png",
-      "./test-arts/saitama.jpg",
-      "./test-arts/rage.jpg",
-      "./test-arts/photo_2023-09-27_15-24-37.jpg",
+      "https://res.cloudinary.com/dk0jh3jqa/image/upload/v1702295229/Runliq/fire_jyhezm.png",
+      "https://res.cloudinary.com/dk0jh3jqa/image/upload/v1702295242/Runliq/saitama_lmwyoh.jpg",
+      "https://res.cloudinary.com/dk0jh3jqa/image/upload/v1702295238/Runliq/rage_mmcnyp.jpg",
+      "https://res.cloudinary.com/dk0jh3jqa/image/upload/v1702295235/Runliq/photo_2023-09-27_15-24-37_vmyejl.jpg",
     ],
 
     title: "epiC Realism",
@@ -235,10 +234,10 @@ const models = ref([
   {
     id: 6,
     imgs: [
-      "./test-arts/knight epic.png",
-      "./test-arts/knight.png",
-      "./test-arts/fire.png",
-      "./test-arts/dream_TradingCard (2).jpg",
+      "https://res.cloudinary.com/dk0jh3jqa/image/upload/v1702295231/Runliq/knight_epic_riljt0.png",
+      "https://res.cloudinary.com/dk0jh3jqa/image/upload/v1702295232/Runliq/knight_qhfm4i.png",
+      "https://res.cloudinary.com/dk0jh3jqa/image/upload/v1702295229/Runliq/fire_jyhezm.png",
+      "https://res.cloudinary.com/dk0jh3jqa/image/upload/v1702295223/Runliq/dream_TradingCard_2_mlla3s.jpg",
     ],
     title: "Flat 2D animerge",
   },
@@ -335,7 +334,7 @@ function selectModal(id) {
     }
     &__random {
       color: $colorBlue;
-      margin-top: -14px;
+      margin-top: -11px;
 
       @media (any-hover: hover) {
         cursor: pointer;

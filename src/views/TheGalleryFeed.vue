@@ -89,10 +89,11 @@ const items = [
     likes: 143,
     user: {
       name: "Mister German",
-      avatar: "/avatar.png",
+      avatar:
+        "https://res.cloudinary.com/dk0jh3jqa/image/upload/v1702295263/Runliq/avatar_umno8v.png",
     },
     date: new Date("2023-11-13"),
-    url: "/test-arts/dream_TradingCard (1).jpg",
+    url: "https://res.cloudinary.com/dk0jh3jqa/image/upload/v1702295222/Runliq/dream_TradingCard_1_rmuciv.jpg",
   },
   {
     title: "test 2",
@@ -100,10 +101,11 @@ const items = [
     likes: 143,
     user: {
       name: "Mister German",
-      avatar: "/avatar.png",
+      avatar:
+        "https://res.cloudinary.com/dk0jh3jqa/image/upload/v1702295263/Runliq/avatar_umno8v.png",
     },
     date: new Date("2023-11-16"),
-    url: "/test-arts/dream_TradingCard.jpg",
+    url: "https://res.cloudinary.com/dk0jh3jqa/image/upload/v1702295226/Runliq/dream_TradingCard_ylscqp.jpg",
   },
   {
     title: "test 3",
@@ -111,10 +113,11 @@ const items = [
     likes: 143,
     user: {
       name: "Mister German",
-      avatar: "/avatar.png",
+      avatar:
+        "https://res.cloudinary.com/dk0jh3jqa/image/upload/v1702295263/Runliq/avatar_umno8v.png",
     },
     date: new Date("2023-11-16"),
-    url: "/test-arts/final.jpg",
+    url: "https://res.cloudinary.com/dk0jh3jqa/image/upload/v1702295228/Runliq/final_bhjlfq.jpg",
   },
   {
     title: "test 4",
@@ -122,10 +125,11 @@ const items = [
     likes: 143,
     user: {
       name: "Mister German",
-      avatar: "/avatar.png",
+      avatar:
+        "https://res.cloudinary.com/dk0jh3jqa/image/upload/v1702295263/Runliq/avatar_umno8v.png",
     },
     date: new Date("2023-11-16"),
-    url: "/test-arts/saitama.jpg",
+    url: "https://res.cloudinary.com/dk0jh3jqa/image/upload/v1702295242/Runliq/saitama_lmwyoh.jpg",
   },
   {
     title: "test 5",
@@ -133,10 +137,11 @@ const items = [
     likes: 143,
     user: {
       name: "Mister German",
-      avatar: "/avatar.png",
+      avatar:
+        "https://res.cloudinary.com/dk0jh3jqa/image/upload/v1702295263/Runliq/avatar_umno8v.png",
     },
     date: new Date("2023-11-16"),
-    url: "/test-arts/185as7578879094j5hjsy6a674ajd897.jpg",
+    url: "https://res.cloudinary.com/dk0jh3jqa/image/upload/v1702295218/Runliq/185as7578879094j5hjsy6a674ajd897_juwkie.jpg",
   },
   {
     title: "test 7",
@@ -144,10 +149,11 @@ const items = [
     likes: 143,
     user: {
       name: "Mister German",
-      avatar: "/avatar.png",
+      avatar:
+        "https://res.cloudinary.com/dk0jh3jqa/image/upload/v1702295263/Runliq/avatar_umno8v.png",
     },
     date: new Date("2023-11-16"),
-    url: "/test-arts/cropped-1920-1080-957926.png",
+    url: "https://res.cloudinary.com/dk0jh3jqa/image/upload/v1702295221/Runliq/cropped-1920-1080-957926_vvu9nn.png",
   },
   {
     title: "test 6",
@@ -155,10 +161,11 @@ const items = [
     likes: 143,
     user: {
       name: "Mister German",
-      avatar: "/avatar.png",
+      avatar:
+        "https://res.cloudinary.com/dk0jh3jqa/image/upload/v1702295263/Runliq/avatar_umno8v.png",
     },
     date: new Date("2023-11-16"),
-    url: "/test-arts/dream_TradingCard (3).jpg",
+    url: "https://res.cloudinary.com/dk0jh3jqa/image/upload/v1702295225/Runliq/dream_TradingCard_3_jnxj0a.jpg",
   },
   {
     title: "knight epic",
@@ -166,10 +173,11 @@ const items = [
     likes: 143,
     user: {
       name: "Mister German",
-      avatar: "/avatar.png",
+      avatar:
+        "https://res.cloudinary.com/dk0jh3jqa/image/upload/v1702295263/Runliq/avatar_umno8v.png",
     },
     date: new Date("2023-11-16"),
-    url: "/test-arts/knight epic.png",
+    url: "https://res.cloudinary.com/dk0jh3jqa/image/upload/v1702295231/Runliq/knight_epic_riljt0.png",
   },
   {
     title: "knight",
@@ -177,10 +185,11 @@ const items = [
     likes: 143,
     user: {
       name: "Mister German",
-      avatar: "/avatar.png",
+      avatar:
+        "https://res.cloudinary.com/dk0jh3jqa/image/upload/v1702295263/Runliq/avatar_umno8v.png",
     },
     date: new Date("2023-11-16"),
-    url: "/test-arts/knight.png",
+    url: "https://res.cloudinary.com/dk0jh3jqa/image/upload/v1702295232/Runliq/knight_qhfm4i.png",
   },
   {
     title: "rage",
@@ -188,10 +197,11 @@ const items = [
     likes: 143,
     user: {
       name: "Mister German",
-      avatar: "/avatar.png",
+      avatar:
+        "https://res.cloudinary.com/dk0jh3jqa/image/upload/v1702295263/Runliq/avatar_umno8v.png",
     },
     date: new Date("2023-11-16"),
-    url: "/test-arts/rage.jpg",
+    url: "https://res.cloudinary.com/dk0jh3jqa/image/upload/v1702295238/Runliq/rage_mmcnyp.jpg",
   },
 ];
 

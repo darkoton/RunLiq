@@ -24,42 +24,42 @@ import TheFeeds from "@/components/feeds/TheFeeds.vue";
 
 const arts = ref([
   {
-    url: "./test-arts/photo_2023-09-27_15-35-25.jpg",
+    url: "https://res.cloudinary.com/dk0jh3jqa/image/upload/v1702295236/Runliq/photo_2023-09-27_15-35-25_roreco.jpg",
     likesCount: 141,
     commentsCount: 46,
   },
   {
-    url: "./test-arts/photo_2023-09-27_15-24-37.jpg",
+    url: "https://res.cloudinary.com/dk0jh3jqa/image/upload/v1702295235/Runliq/photo_2023-09-27_15-24-37_vmyejl.jpg",
     likesCount: 141,
     commentsCount: 46,
   },
   {
-    url: "./test-arts/saitama.jpg",
+    url: "https://res.cloudinary.com/dk0jh3jqa/image/upload/v1702295242/Runliq/saitama_lmwyoh.jpg",
     likesCount: 141,
     commentsCount: 46,
   },
   {
-    url: "./test-arts/photo_2021-08-15_12-17-20.jpg",
+    url: "https://res.cloudinary.com/dk0jh3jqa/image/upload/v1702295233/Runliq/photo_2021-08-15_12-17-20_xg86gl.jpg",
     likesCount: 141,
     commentsCount: 46,
   },
   {
-    url: "./test-arts/red.jpg",
+    url: "https://res.cloudinary.com/dk0jh3jqa/image/upload/v1702295241/Runliq/red_itnfst.jpg",
     likesCount: 141,
     commentsCount: 46,
   },
   {
-    url: "./test-arts/rage.png",
+    url: "https://res.cloudinary.com/dk0jh3jqa/image/upload/v1702295240/Runliq/rage_hjh8c1.png",
     likesCount: 141,
     commentsCount: 46,
   },
   {
-    url: "./test-arts/batman.png",
+    url: "https://res.cloudinary.com/dk0jh3jqa/image/upload/v1702295220/Runliq/batman_my1que.png",
     likesCount: 141,
     commentsCount: 46,
   },
   {
-    url: "./test-arts/woman.png",
+    url: "https://res.cloudinary.com/dk0jh3jqa/image/upload/v1702295244/Runliq/woman_ojmkxi.png",
     likesCount: 141,
     commentsCount: 46,
   },

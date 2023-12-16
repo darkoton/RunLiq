@@ -34,45 +34,55 @@ const router = useRouter();
 
 const post = ref({
   urls: [
-    "/test-arts/photo_2023-09-27_15-24-37.jpg",
-    "/test-arts/rage.jpg",
-    "/test-arts/photo_2021-08-15_12-17-20.jpg",
-    "/test-arts/saitama.jpg",
+    "https://res.cloudinary.com/dk0jh3jqa/image/upload/v1702295235/Runliq/photo_2023-09-27_15-24-37_vmyejl.jpg",
+    "https://res.cloudinary.com/dk0jh3jqa/image/upload/v1702295238/Runliq/rage_mmcnyp.jpg",
+    "https://res.cloudinary.com/dk0jh3jqa/image/upload/v1702295233/Runliq/photo_2021-08-15_12-17-20_xg86gl.jpg",
+    "https://res.cloudinary.com/dk0jh3jqa/image/upload/v1702295242/Runliq/saitama_lmwyoh.jpg",
   ],
   likesCount: 141,
   commentsCount: 46,
-  user: { avatar: "/avatar.png", name: "Aleksandr Schastlivyi" },
+  user: {
+    avatar:
+      "https://res.cloudinary.com/dk0jh3jqa/image/upload/v1702295263/Runliq/avatar_umno8v.png",
+    name: "Aleksandr Schastlivyi",
+  },
   title: "Post title",
   description:
     "Lorem ipsum dolor sit amet, vince adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Текст",
   comments: [
     {
       username: "Aleksandr Schastlivyi",
-      avatar: "/avatar.png",
+      avatar:
+        "https://res.cloudinary.com/dk0jh3jqa/image/upload/v1702295263/Runliq/avatar_umno8v.png",
       message: "We supply a series of design principles",
       reply: {
         username: "Aleksandr Schastlivyi",
-        avatar: "/avatar.png",
+        avatar:
+          "https://res.cloudinary.com/dk0jh3jqa/image/upload/v1702295263/Runliq/avatar_umno8v.png",
         message: "reply We supply a series of design principles",
       },
     },
     {
       username: "Aleksandr Schastlivyi",
-      avatar: "/avatar.png",
+      avatar:
+        "https://res.cloudinary.com/dk0jh3jqa/image/upload/v1702295263/Runliq/avatar_umno8v.png",
       message: "We supply a series of design principles",
       reply: {
         username: "Aleksandr Schastlivyi",
-        avatar: "/avatar.png",
+        avatar:
+          "https://res.cloudinary.com/dk0jh3jqa/image/upload/v1702295263/Runliq/avatar_umno8v.png",
         message: "reply We supply a series of design principles",
       },
     },
     {
       username: "Aleksandr Schastlivyi",
-      avatar: "/avatar.png",
+      avatar:
+        "https://res.cloudinary.com/dk0jh3jqa/image/upload/v1702295263/Runliq/avatar_umno8v.png",
       message: "We supply a series of design principles",
       reply: {
         username: "Aleksandr Schastlivyi",
-        avatar: "/avatar.png",
+        avatar:
+          "https://res.cloudinary.com/dk0jh3jqa/image/upload/v1702295263/Runliq/avatar_umno8v.png",
         message: "reply We supply a series of design principles",
       },
     },

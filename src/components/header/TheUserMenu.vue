@@ -5,7 +5,7 @@
       <span class="header__username">Aleksandr Schastlivyi</span>
     </a>
     <template #overlay>
-      <a-menu>
+      <a-menu class="header__dropdown-menu">
         <a-menu-item key="profile" @click="router.push('/profile')">
           <span>Your Profile</span>
         </a-menu-item>
@@ -68,7 +68,7 @@ const userSettings = ref({
     @include adaptiv-value(column-gap, 10, 5, 1);
     background: transparent;
     color: var(--black);
-    padding: 12px 0;
+    padding: 16px 0;
     border-bottom: 2px solid transparent;
     @media (any-hover: hover) {
       cursor: pointer;

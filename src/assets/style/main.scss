@@ -24,7 +24,15 @@ body {
   color: var(--black);
   font-size: 14px;
   overflow-y: scroll;
-  @include scrollbars(5px, rgba($colorBlue, 0.5), var(--background), 10px);
+  // @include scrollbars(5px, rgba($colorBlue, 0.5), var(--background), 10px);
+
+  @include scrollbars(12px, #bfbfbf, var(--background), 10px);
+
+  &::-webkit-scrollbar-thumb {
+    border: 3px solid var(--ant-border);
+  }
+
+
   // ._lock-scroll
   &._lock-scroll {
      overflow: hidden;
