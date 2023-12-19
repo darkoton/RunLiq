@@ -18,10 +18,21 @@
 .ant-progress-circle .ant-progress-text{
   color: var(--black);
 }
-textarea.ant-input, .ant-input-number, .ant-input, .ant-select-selector{
+textarea.ant-input, .ant-input-number, .ant-input, .ant-select-selector, .ant-input-affix-wrapper{
   background-color: var(--textarea-bg) !important;
   border-color: var(--textarea-border) !important;
   color: var(--black);
+}
+.ant-input-password-icon{
+  color: var(--gray);
+
+  @media (any-hover:hover){
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    &:hover{
+      color: var(--black);
+    }
+  }
 }
 .ant-switch{
   background-color: var(--switch-bg);

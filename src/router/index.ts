@@ -40,6 +40,11 @@ const routes = [
     component: () => import('@/views/ThePost.vue'),
   },
   {
+    path: '/login',
+    name: 'login',
+    component: () => import('@/views/TheLogin.vue'),
+  },
+  {
     path: '/privacy-policy',
     name: 'privacy policy',
     component: () => import('@/views/ThePrivacyPolicy.vue'),
