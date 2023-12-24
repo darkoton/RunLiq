@@ -2,7 +2,9 @@
   <div class="preview" :class="[classEl]">
     <div class="preview__bg" @click="$emit('close')"></div>
     <div class="preview__actions">
-      <a :href="urlImg" download=""><DownloadOutlined /></a>
+      <a :href="urlImg" download="">
+        <DownloadOutlined />
+      </a>
       <button>
         <CloseOutlined @click="$emit('close')" />
       </button>
@@ -80,6 +82,7 @@ function open() {
     z-index: 50;
     opacity: 1;
   }
+
   &.close {
     z-index: 50;
     opacity: 0;
@@ -94,6 +97,7 @@ function open() {
     background-color: rgba(0, 0, 0, 0.83);
     transition: all 0.5s ease 0.3s;
   }
+
   &__img-body {
     width: 100%;
     height: 100%;
@@ -106,6 +110,8 @@ function open() {
     overflow: hidden;
 
     img {
+      width: 100%;
+      height: 100%;
       max-width: 100%;
       max-height: 100%;
       object-fit: cover;
@@ -116,6 +122,7 @@ function open() {
       transform: translate(-50%, -50%);
     }
   }
+
   &__actions {
     position: absolute;
     @include adaptiv-value(top, 30, 15, 1);
@@ -128,9 +135,11 @@ function open() {
     & a,
     & button {
       color: #8c8c8c;
+
       @media (any-hover: hover) {
         cursor: pointer;
         transition: all 0.3s ease 0s;
+
         &:hover {
           color: $colorBlue;
         }
@@ -141,5 +150,4 @@ function open() {
   &.open-animation .preview__actions {
     opacity: 1;
   }
-}
-</style>
+}</style>

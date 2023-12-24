@@ -27,7 +27,7 @@ useDark();
 onMounted(async () => {
   if (localStorage.authToken) {
     try {
-      const { data: user } = await axios.get("userinfo", {
+      const { data: user } = await axios.get("user/info", {
         headers: {
           Authorization: "Bearer " + localStorage.authToken
         }

@@ -82,7 +82,7 @@ const handleFinish = async (values: FormState) => {
     error.value.state = false
     localStorage.setItem("authToken", token);
 
-    const { data: user } = await axios.get("userinfo", {
+    const { data: user } = await axios.get("user/info", {
       headers: {
         Authorization: "Bearer " + token
       }

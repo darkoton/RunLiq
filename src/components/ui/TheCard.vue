@@ -2,7 +2,7 @@
   <div class="card" :style="{
     width: sizes.width + 'px',
     height: sizes.height + 'px',
-  }" @mouseover="slider ? startSwiper() : ''" @mouseleave="slider ? stopSwiper() : ''">
+  }" @mouseover="data.images ? startSwiper() : ''" @mouseleave="data.images ? stopSwiper() : ''">
     <div class="card__body">
       <slot />
       <div class="card__img">
@@ -27,26 +27,30 @@
           </template>
         </a-dropdown>
 
-        <img :src="data.file" alt="art" @click="preview" v-if="!slider" />
+        <img :src="data.file" alt="art" @click="preview" v-if="!data.images" />
 
-        <swiper :modules="[EffectFade, Autoplay]" :effect="'fade'" :autoplay="{
-          delay: 1000,
-          disableOnInteraction: false,
-        }" :disableOnInteraction="false" class="card__slider" @swiper="onSwiper" v-else>
-          <swiper-slide v-for="img in data.urls" :key="img">
-            <img :src="img" alt="" class="card__slider-img" /></swiper-slide>
-        </swiper>
+        <div class="card__slider-body" @click=" link
+          ? goPost()
+          : ''" v-else>
+          <swiper :modules="[EffectFade, Autoplay]" :effect="'fade'" :autoplay="{
+            delay: 1000,
+            disableOnInteraction: false,
+          }" :disableOnInteraction="false" class="card__slider" @swiper="onSwiper">
+            <swiper-slide v-for="img in data.images" :key="img">
+              <img :src="img.file" alt="" class="card__slider-img" /></swiper-slide>
+          </swiper>
+        </div>
       </div>
 
       <div class="card__rating-panel rating-panel" v-if="type == 'rating'">
         <span class="rating-panel__item rating-panel__comments">
           <MessageOutlined />
-          <span class="comments-count">{{ data.commentsCount }}</span>
+          <span class="comments-count">{{ data.commentsCount ? data.commentsCount : 0 }}</span>
         </span>
 
         <span class="rating-panel__item rating-panel__likes">
           <LikeFilled />
-          <span class="likes-count">{{ data.likesCount }}</span>
+          <span class="likes-count">{{ data.likesCount ? data.likesCount : 0 }}</span>
         </span>
       </div>
 
@@ -64,6 +68,7 @@
 
 <script setup lang="ts">
 import { ref, defineProps, defineEmits } from "vue";
+import { useRouter } from "vue-router";
 import {
   MessageOutlined,
   LikeFilled,
@@ -75,7 +80,9 @@ import "swiper/css";
 import "swiper/css/effect-fade";
 import { EffectFade, Autoplay } from "swiper/modules";
 
-defineProps({
+const router = useRouter()
+
+const props = defineProps({
   data: {
     type: Object,
     default: () => {
@@ -96,7 +103,7 @@ defineProps({
     type: Boolean,
     default: false,
   },
-  slider: {
+  link: {
     type: Boolean,
     default: false,
   },
@@ -105,6 +112,8 @@ defineProps({
 const emit = defineEmits(["preview"]);
 
 function preview(event: any) {
+  console.log(1212);
+
   emit("preview", event.target);
 }
 
@@ -121,9 +130,14 @@ function stopSwiper() {
   }
 }
 function startSwiper() {
+
   if (!swiperSlider?.value.autoplay.running) {
     swiperSlider.value.autoplay.start();
   }
+}
+
+function goPost() {
+  router.push(`/p/${props.data.slug}`);
 }
 </script>
 
@@ -306,6 +320,17 @@ function startSwiper() {
 
   &__slider {
     height: 100%;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+      z-index: 2;
+    }
   }
 
   &.select {

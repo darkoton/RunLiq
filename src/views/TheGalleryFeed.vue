@@ -2,19 +2,9 @@
   <section class="feed">
     <div class="feed__wrapper">
       <div class="feed__body">
-        <ThePreview
-          :urlImg="previewData.url"
-          :open="previewData.open"
-          @close="previewData.open = false"
-          :img="previewData.img"
-        />
-        <TheMasonry
-          :items="items"
-          :columns="4"
-          :columns-width="260"
-          :gap="20"
-          class="feed__list"
-        >
+        <ThePreview :urlImg="previewData.url" :open="previewData.open" @close="previewData.open = false"
+          :img="previewData.img" />
+        <TheMasonry :items="items" :columns="4" :columns-width="260" :gap="20" class="feed__list">
           <template #default="{ item }">
             <article class="feed__post post">
               <div class="post__info">
@@ -25,11 +15,7 @@
               </div>
 
               <div class="post__img">
-                <a-dropdown
-                  :trigger="['click']"
-                  placement="bottomRight"
-                  class="post__menu"
-                >
+                <a-dropdown :trigger="['click']" placement="bottomRight" class="post__menu">
                   <a class="post__menu-button" @click.prevent>
                     <span></span>
                     <span></span>
@@ -38,9 +24,7 @@
                   <template #overlay>
                     <a-menu>
                       <a-menu-item key="0">
-                        <a :href="item.url" download class="ant-dropdown-link"
-                          >Download</a
-                        >
+                        <a :href="item.url" download class="ant-dropdown-link">Download</a>
                       </a-menu-item>
                       <a-menu-item key="1">
                         <a href="#">Report</a>
@@ -52,8 +36,8 @@
                 <img :src="item.url" alt="" @click="preview" />
 
                 <div class="post__counters">
-                  <span class="post__likes post__counter"
-                    ><LikeOutlined class="post__counter-icon" />
+                  <span class="post__likes post__counter">
+                    <LikeOutlined class="post__counter-icon" />
                     <span class="post__counter-value">{{ item.likes }}</span>
                   </span>
                   <span class="post__comments post__counter">
@@ -225,6 +209,7 @@ function preview(event) {
   &__list {
     @include adaptiv-value(margin-top, 50, 25, 1);
   }
+
   & .post {
     &__info {
       display: flex;
@@ -240,6 +225,7 @@ function preview(event) {
       @include adaptiv-font(12, 10);
       @include adaptiv-line-height(20, 16);
     }
+
     &__img {
       border-radius: 12px;
       overflow: hidden;
@@ -265,25 +251,31 @@ function preview(event) {
       @include adaptiv-value(column-gap, 16, 8, 1);
       display: flex;
     }
+
     &__counter {
       display: flex;
       align-items: center;
+
       @media (any-hover: hover) {
         cursor: pointer;
         transition: all 0.3s ease 0s;
+
         &:hover {
           color: $colorBlue;
         }
       }
     }
+
     &__counter-icon {
       margin-right: 9px;
       @include adaptiv-font(18, 15);
     }
+
     &__counter-value {
       font-size: 12px;
       line-height: 18px;
     }
+
     &__menu-button {
       z-index: -1;
       opacity: 0;
@@ -311,6 +303,7 @@ function preview(event) {
     @media (any-hover: hover) {
       cursor: pointer;
       transition: all 0.3s ease 0s;
+
       &:hover {
         & .post__menu-button {
           z-index: 0;

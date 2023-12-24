@@ -7,21 +7,12 @@
 
 <template>
   <div class="masonry" ref="masonry" :style="{ gap: gap + 'px' }">
-    <div
-      class="masonry-col"
-      :style="{
-        width: '100%',
-        maxWidth: columnsWidth + 'px',
-        gap: gap + 'px',
-      }"
-      v-for="column in columnsNumber"
-      :key="column"
-    >
-      <div
-        class="masonry__item"
-        v-for="item in columnsItems[column - 1]"
-        :key="item"
-      >
+    <div class="masonry-col" :style="{
+      width: '100%',
+      maxWidth: columnsWidth + 'px',
+      gap: gap + 'px',
+    }" v-for="column in columnsNumber" :key="column">
+      <div class="masonry__item" v-for="item in columnsItems[column - 1]" :key="item">
         <slot :item="item"></slot>
       </div>
     </div>
@@ -122,7 +113,7 @@ function masonryBreakpoints() {
   if (
     window.innerWidth <
     props.columnsWidth * columnsNumber.value +
-      props.gap * (columnsNumber.value - 1)
+    props.gap * (columnsNumber.value - 1)
   ) {
     columnsNumber.value--;
     masonryBreakpoints();
@@ -131,8 +122,8 @@ function masonryBreakpoints() {
     if (
       columnsNumber.value < props.columns &&
       window.innerWidth >
-        props.columnsWidth * (columnsNumber.value + 1) +
-          props.gap * (columnsNumber.value + 1)
+      props.columnsWidth * (columnsNumber.value + 1) +
+      props.gap * (columnsNumber.value + 1)
     ) {
       columnsNumber.value++;
     }
@@ -157,6 +148,7 @@ onBeforeUnmount(() => {
   display: flex;
   justify-content: center;
 }
+
 .masonry-col {
   display: flex;
   flex-direction: column;

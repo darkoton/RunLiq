@@ -26,11 +26,7 @@ const store = usePostCreateStore();
 
 async function getImgs(offset = 0) {
 
-  const res = await axios.get(`user/images?limit=25&offset=${offset}`, {
-    headers: {
-      Authorization: "Bearer " + localStorage.authToken
-    }
-  })
+  const res = await axios.getUserImages(offset)
 
   return res.data.images
 }

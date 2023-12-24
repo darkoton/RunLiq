@@ -15,20 +15,20 @@
           'grid-template-rows': `repeat(auto-fit, minmax(${sizes.height - 50 + 'px'
             }, ${sizes.height + 'px'}))`,
         }" :class="{ scroll: scroll }">
-          <TheCard v-for="(art, index) in feedData" :key="art" :data="art" :type="type == 'select' ? 'default' : type"
-            :sizes="sizes" @preview="preview" @click="
-              routerLink
-                ? goPost(index)
-                : type == 'select'
-                  ? select(art)
-                  : ''
+
+          <TheCard v-for="(art) in feedData" :key="art" :data="art" :type="type == 'select' ? 'default' : type"
+            :sizes="sizes" @preview="preview" :link="routerLink" @click="
+              type == 'select'
+                ? select(art)
+                : ''
               " :class="{
     select: store.selectValue.findIndex((el) => el.id == art.id) > -1,
-  }" :menu="menu" :slider="slider">
+  }" :menu="menu">
             <span class="select-order">{{
               store.selectValue.findIndex(el => el.id == art.id) + 1
             }}</span>
           </TheCard>
+
         </ul>
 
 
@@ -40,12 +40,10 @@
 
 <script setup>
 import { ref, defineProps, onMounted } from "vue";
-import { useRouter } from "vue-router";
 import TheCard from "@/components/ui/TheCard.vue";
 import ThePreview from "@/components/ui/ThePreview.vue";
 import { usePostCreateStore } from "@/stores/create-post";
 
-const router = useRouter();
 const store = usePostCreateStore();
 const props = defineProps({
   title: {
@@ -79,10 +77,6 @@ const props = defineProps({
     },
   },
   menu: {
-    type: Boolean,
-    default: false,
-  },
-  slider: {
     type: Boolean,
     default: false,
   },
@@ -128,13 +122,9 @@ function select(data) {
   store.selectValue.push(data);
 }
 
-function goPost(index) {
-  router.push(`/p/${index}`);
-}
 
 onMounted(async () => {
   feedData.value = await props.fnData(offset)
-  // console.log(feedData.value);
   offset = feedData.value.length
 })
 </script>
