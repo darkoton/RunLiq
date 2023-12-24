@@ -106,7 +106,7 @@ const handleValidate = () => {
 };
 
 onMounted(() => {
-  if (localStorage.authToken) {
+  if (userStore.user) {
     router.push('/')
   }
 })

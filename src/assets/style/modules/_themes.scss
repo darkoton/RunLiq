@@ -20,8 +20,8 @@
   --slider-color: var(--gray);
   --slider-rail:  #F5F5F5;
   --slider-track:  #91d5ff;
-  --slider-track:  #91d5ff;
   --burger-background: #fff;
+  --multi-select-selected: #91d5ff;
 }
 
 html.dark {
@@ -47,4 +47,5 @@ html.dark {
   --slider-rail: #494949;
   --slider-track:  #3eb2fa;
   --burger-background: #111;
+  --multi-select-selected: #99d3ff3d;
 }

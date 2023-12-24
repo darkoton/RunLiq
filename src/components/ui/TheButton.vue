@@ -1,16 +1,12 @@
 <template>
-  <button
-    class="button"
-    :class="[type, { clickActive }]"
-    :style="{ 'border-color': borderColor }"
-    @click="click"
-  >
-    <component v-if="icon" :is="icon" class="icon"></component><slot></slot>
+  <button class="button" :class="[type, { clickActive }]" :style="{ 'border-color': borderColor }" @click="click">
+    <component v-if="icon" :is="icon" class="icon"></component>
+    <slot></slot>
   </button>
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, defineProps } from "vue";
 
 defineProps({
   type: {
@@ -44,8 +40,10 @@ function click() {
   border-radius: 12px;
   background: transparent;
   transition: all 0.3s ease 0s;
+
   @media (any-hover: hover) {
     cursor: pointer;
+
     &:hover {
       color: $colorBlue;
       border-color: $colorBlue;
@@ -64,8 +62,10 @@ function click() {
     background: $colorBlue;
     border-width: 0;
     color: #ffff;
+
     @media (any-hover: hover) {
       cursor: pointer;
+
       &:hover {
         background-color: rgba(66, 151, 255, 0.8);
       }
@@ -76,8 +76,10 @@ function click() {
     border-width: 1px;
     border-style: dashed;
     border-color: #ccc;
+
     @media (any-hover: hover) {
       cursor: pointer;
+
       &:hover {
         opacity: 0.8;
         color: $colorBlue;

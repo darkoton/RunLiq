@@ -1,22 +1,12 @@
 <template>
-  <div
-    class="card"
-    :style="{
-      width: sizes.width + 'px',
-      height: sizes.height + 'px',
-    }"
-    @mouseover="slider ? startSwiper() : ''"
-    @mouseleave="slider ? stopSwiper() : ''"
-  >
+  <div class="card" :style="{
+    width: sizes.width + 'px',
+    height: sizes.height + 'px',
+  }" @mouseover="slider ? startSwiper() : ''" @mouseleave="slider ? stopSwiper() : ''">
     <div class="card__body">
       <slot />
       <div class="card__img">
-        <a-dropdown
-          :trigger="['click']"
-          placement="bottomRight"
-          class="card__menu"
-          v-if="menu"
-        >
+        <a-dropdown :trigger="['click']" placement="bottomRight" class="card__menu" v-if="menu">
           <a class="card__menu-button" @click.prevent>
             <span></span>
             <span></span>
@@ -25,9 +15,7 @@
           <template #overlay>
             <a-menu>
               <a-menu-item key="0">
-                <a :href="data.url" download class="ant-dropdown-link"
-                  >Download</a
-                >
+                <a :href="data.url" download class="ant-dropdown-link">Download</a>
               </a-menu-item>
               <a-menu-item key="1">
                 <a href="#">Report</a>
@@ -39,23 +27,14 @@
           </template>
         </a-dropdown>
 
-        <img :src="data.url" alt="art" @click="preview" v-if="!slider" />
+        <img :src="data.file" alt="art" @click="preview" v-if="!slider" />
 
-        <swiper
-          :modules="[EffectFade, Autoplay]"
-          :effect="'fade'"
-          :autoplay="{
-            delay: 1000,
-            disableOnInteraction: false,
-          }"
-          :disableOnInteraction="false"
-          class="card__slider"
-          @swiper="onSwiper"
-          v-else
-        >
+        <swiper :modules="[EffectFade, Autoplay]" :effect="'fade'" :autoplay="{
+          delay: 1000,
+          disableOnInteraction: false,
+        }" :disableOnInteraction="false" class="card__slider" @swiper="onSwiper" v-else>
           <swiper-slide v-for="img in data.urls" :key="img">
-            <img :src="img" alt="" class="card__slider-img"
-          /></swiper-slide>
+            <img :src="img" alt="" class="card__slider-img" /></swiper-slide>
         </swiper>
       </div>
 
@@ -72,8 +51,12 @@
       </div>
 
       <div class="card__rate-panel rate-panel" v-if="type == 'rate'">
-        <button class="rate-panel__like"><LikeOutlined /></button>
-        <button class="rate-panel__dislike"><DislikeOutlined /></button>
+        <button class="rate-panel__like">
+          <LikeOutlined />
+        </button>
+        <button class="rate-panel__dislike">
+          <DislikeOutlined />
+        </button>
       </div>
     </div>
   </div>
@@ -121,13 +104,13 @@ defineProps({
 
 const emit = defineEmits(["preview"]);
 
-function preview(event) {
+function preview(event: any) {
   emit("preview", event.target);
 }
 
 const swiperSlider = ref();
 
-function onSwiper(swiper) {
+function onSwiper(swiper: any) {
   swiper.autoplay.stop();
   swiperSlider.value = swiper;
 }
@@ -138,7 +121,7 @@ function stopSwiper() {
   }
 }
 function startSwiper() {
-  if (!swiperSlider.value.autoplay.running) {
+  if (!swiperSlider?.value.autoplay.running) {
     swiperSlider.value.autoplay.start();
   }
 }
@@ -155,6 +138,7 @@ function startSwiper() {
   width: 100%;
   // max-width: 250px;
   height: 100%;
+
   // max-height: 300px;
   &__body,
   &__img {
@@ -166,6 +150,7 @@ function startSwiper() {
     border-radius: 12px;
     overflow: hidden;
     position: relative;
+
     img {
       width: 100%;
       height: 100%;
@@ -192,6 +177,7 @@ function startSwiper() {
     transition: all 0.4s ease 0s;
     border-radius: 15px;
     backdrop-filter: blur(2px);
+
     &__item {
       display: flex;
       align-items: center;
@@ -200,6 +186,7 @@ function startSwiper() {
       @media (any-hover: hover) {
         cursor: pointer;
         transition: all 0.3s ease 0s;
+
         &:hover {
           color: $colorBlue;
         }
@@ -210,6 +197,7 @@ function startSwiper() {
   @media (any-hover: hover) {
     cursor: pointer;
     transition: all 0.3s ease 0s;
+
     &:hover {
       & .rating-panel {
         bottom: 10px;
@@ -245,6 +233,7 @@ function startSwiper() {
       @media (any-hover: hover) {
         cursor: pointer;
         transition: all 0.3s ease 0s;
+
         &:hover {
           transform: translateY(-2px);
         }
@@ -259,6 +248,7 @@ function startSwiper() {
       @media (any-hover: hover) {
         cursor: pointer;
         transition: all 0.3s ease 0s;
+
         &:hover {
           transform: translateY(2px);
         }
@@ -298,6 +288,7 @@ function startSwiper() {
   @media (any-hover: hover) {
     cursor: pointer;
     transition: all 0.3s ease 0s;
+
     &:hover {
       & .card__menu-button {
         z-index: 5;
@@ -312,6 +303,7 @@ function startSwiper() {
       z-index: 5;
     }
   }
+
   &__slider {
     height: 100%;
   }
@@ -328,11 +320,9 @@ function startSwiper() {
         border-radius: 12px;
         border: 1px solid #1890ff;
         z-index: 10;
-        background: linear-gradient(
-            0deg,
+        background: linear-gradient(0deg,
             rgba(0, 0, 0, 0.2) 0%,
-            rgba(0, 0, 0, 0.2) 100%
-          ),
+            rgba(0, 0, 0, 0.2) 100%),
           rgba(25, 145, 255, 0.25);
       }
     }

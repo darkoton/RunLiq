@@ -2,65 +2,44 @@
   <section class="feed">
     <div class="feed__wrapper">
       <div class="feed__body">
-        <ThePreview
-          :urlImg="previewData.url"
-          :open="previewData.open"
-          @close="previewData.open = false"
-          :img="previewData.img"
-        />
+        <ThePreview :urlImg="previewData.url" :open="previewData.open" @close="previewData.open = false"
+          :img="previewData.img" />
 
         <h2 class="feed__title">
           {{ title }} <span>{{ subtitle }}</span>
         </h2>
 
-        <ul
-          class="feed__list"
-          :style="{
-            'grid-template-columns': `repeat(auto-fit, minmax(${
-              sizes.width - 50 + 'px'
+        <ul class="feed__list" :style="{
+          'grid-template-columns': `repeat(auto-fit, minmax(${sizes.width - 50 + 'px'
             }, ${sizes.width + 'px'}))`,
-            'grid-template-rows': `repeat(auto-fit, minmax(${
-              sizes.height - 50 + 'px'
+          'grid-template-rows': `repeat(auto-fit, minmax(${sizes.height - 50 + 'px'
             }, ${sizes.height + 'px'}))`,
-          }"
-          :class="{ scroll: scroll }"
-        >
-          <TheCard
-            v-for="(art, index) in data"
-            :key="art"
-            :data="art"
-            :type="type == 'select' ? 'default' : type"
-            :sizes="sizes"
-            @preview="preview"
-            @click="
+        }" :class="{ scroll: scroll }">
+          <TheCard v-for="(art, index) in feedData" :key="art" :data="art" :type="type == 'select' ? 'default' : type"
+            :sizes="sizes" @preview="preview" @click="
               routerLink
                 ? goPost(index)
                 : type == 'select'
-                ? select({ src: art.url, id: index })
-                : ''
-            "
-            :class="{
-              select: store.selectValue.findIndex((el) => el.id == index) > -1,
-            }"
-            :menu="menu"
-            :slider="slider"
-          >
+                  ? select(art)
+                  : ''
+              " :class="{
+    select: store.selectValue.findIndex((el) => el.id == art.id) > -1,
+  }" :menu="menu" :slider="slider">
             <span class="select-order">{{
-              store.selectValue.indexOf(index) + 1
+              store.selectValue.findIndex(el => el.id == art.id) + 1
             }}</span>
           </TheCard>
         </ul>
 
-        <a-button type="dashed" class="feed__button" v-if="load"
-          >Load more</a-button
-        >
+
+        <a-button type="dashed" class="feed__button" v-if="load">Load more</a-button>
       </div>
     </div>
   </section>
 </template>
 
 <script setup>
-import { ref, defineProps } from "vue";
+import { ref, defineProps, onMounted } from "vue";
 import { useRouter } from "vue-router";
 import TheCard from "@/components/ui/TheCard.vue";
 import ThePreview from "@/components/ui/ThePreview.vue";
@@ -84,6 +63,10 @@ const props = defineProps({
   data: {
     type: Array,
     default: () => [],
+  },
+  fnData: {
+    type: Function,
+    default: () => []
   },
   load: {
     type: Boolean,
@@ -113,6 +96,8 @@ const props = defineProps({
   },
 });
 
+const feedData = ref([])
+let offset = 0
 const previewData = ref({
   url: "",
   open: false,
@@ -135,7 +120,9 @@ function select(data) {
       store.selectValue.findIndex((el) => el.id == data.id),
       1
     );
-
+    if (store.selectError) {
+      store.selectError = false
+    }
     return;
   }
   store.selectValue.push(data);
@@ -144,6 +131,12 @@ function select(data) {
 function goPost(index) {
   router.push(`/p/${index}`);
 }
+
+onMounted(async () => {
+  feedData.value = await props.fnData(offset)
+  // console.log(feedData.value);
+  offset = feedData.value.length
+})
 </script>
 
 <style lang="scss" scoped>
@@ -153,6 +146,7 @@ function goPost(index) {
     flex-direction: column;
     align-items: center;
   }
+
   &__title {
     color: $colorBlue;
     @include adaptiv-font(18, 15);
@@ -183,6 +177,7 @@ function goPost(index) {
     &::-webkit-scrollbar-thumb {
       border: 3px solid var(--ant-border);
     }
+
     &::-webkit-scrollbar-track {
       border-radius: 10px;
     }
@@ -192,6 +187,7 @@ function goPost(index) {
       overflow: auto;
     }
   }
+
   &__button {
     width: 100%;
     max-width: 323px;
@@ -205,6 +201,7 @@ function goPost(index) {
       border-color: #096dd9;
     }
   }
+
   & .select-order {
     position: absolute;
     top: 10px;
@@ -220,6 +217,7 @@ function goPost(index) {
     font-size: 12px;
     line-height: 20px;
   }
+
   & .select .select-order {
     z-index: 9;
   }

@@ -2,44 +2,29 @@
   <div class="slider">
     <div class="slider__wrapper">
       <div class="slider__body">
-        <div class="slider__empty" v-if="!store.selectValue.length">
+        <div class="slider__empty" :class="{ error: store.selectError }" v-if="!store.selectValue.length">
           Select your jobs below
         </div>
 
         <div class="slider__swiper-body" v-else>
-          <swiper
-            :loop="true"
-            :grabCursor="true"
-            class="slider__swiper create-post"
-            @swiper="onSwiper"
-          >
-            <span class="slider__prev" @click="swiperSlider.slidePrev()"
-              ><LeftOutlined />
+          <swiper :loop="store.selectValue.length > 1" :grabCursor="true" class="slider__swiper create-post"
+            @swiper="onSwiper">
+            <span class="slider__prev" @click="swiperSlider.slidePrev()">
+              <LeftOutlined />
             </span>
-            <span class="slider__next" @click="swiperSlider.slideNext()"
-              ><RightOutlined
-            /></span>
-            <swiper-slide
-              v-for="slide in store.selectValue"
-              :key="slide"
-              class="slider__slide"
-              ><img :src="slide.src" alt=""
-            /></swiper-slide>
+            <span class="slider__next" @click="swiperSlider.slideNext()">
+              <RightOutlined />
+            </span>
+            <swiper-slide v-for="slide in store.selectValue" :key="slide" class="slider__slide">
+              <img :src="slide.file" alt="" />
+            </swiper-slide>
           </swiper>
-          <div
-            class="slider__paginations"
-            v-if="swiperSlider.slides && swiperSlider.slides.length"
-          >
+          <div class="slider__paginations" v-if="swiperSlider.slides && swiperSlider.slides.length">
             <div class="slider__pagination">
-              <span
-                class="slider__pagination-bullet"
-                v-for="bullet in swiperSlider.slides.length"
-                :key="bullet"
-                :class="{
-                  'slider__pagination-bullet-active':
-                    bullet == swiperSlider.realIndex + 1,
-                }"
-              ></span>
+              <span class="slider__pagination-bullet" v-for="bullet in swiperSlider.slides.length" :key="bullet" :class="{
+                'slider__pagination-bullet-active':
+                  bullet == swiperSlider.realIndex + 1,
+              }"></span>
             </div>
             <div class="slider__fraction">
               ({{ swiperSlider ? swiperSlider.realIndex + 1 : "" }}/{{
@@ -67,13 +52,6 @@ let swiperSlider = ref({
   slides: [],
 });
 
-// const slides = ref([
-//   "https://res.cloudinary.com/dk0jh3jqa/image/upload/v1702295240/Runliq/rage_hjh8c1.png",
-//   "https://res.cloudinary.com/dk0jh3jqa/image/upload/v1702295232/Runliq/knight_qhfm4i.png",
-//   "https://res.cloudinary.com/dk0jh3jqa/image/upload/v1702295238/Runliq/rage_mmcnyp.jpg",
-//   "https://res.cloudinary.com/dk0jh3jqa/image/upload/v1702295242/Runliq/saitama_lmwyoh.jpg",
-// ]);
-
 function onSwiper(swiper) {
   swiperSlider.value = swiper;
 }
@@ -87,6 +65,7 @@ function onSwiper(swiper) {
   &__body {
     height: 100%;
   }
+
   &__body {
     position: relative;
     display: flex;
@@ -106,7 +85,12 @@ function onSwiper(swiper) {
     border: 2px dashed var(--blackGray);
     background: var(--lightGray);
     padding: 20px;
+
+    &.error {
+      border-color: $colorRed;
+    }
   }
+
   &__swiper-body {
     height: 100%;
     width: 100%;
@@ -114,12 +98,16 @@ function onSwiper(swiper) {
     flex-direction: column;
     max-width: 450px;
   }
+
   &__swiper {
     height: 100%;
     width: 100%;
+    @include adaptiv-value(max-height, 425, 350, 1);
+
     // overflow-x: hidden;
     // overflow-y: visible;
     // position: static;
+
   }
 
   &__prev,
@@ -133,33 +121,41 @@ function onSwiper(swiper) {
     @include adaptiv-font(36, 26);
 
     color: #40a9ff;
+
     @media (any-hover: hover) {
       cursor: pointer;
       transition: all 0.3s ease 0s;
+
       &:hover {
         background: rgba(217, 217, 217, 0.2);
         color: $colorBlue;
       }
     }
   }
+
   &__prev {
     left: 0;
   }
+
   &__next {
     right: 0;
   }
+
   &__slide {
-    @include adaptiv-value(height, 425, 350, 1);
+    height: 100%;
+
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
   }
+
   &__paginations {
     display: flex;
     flex-direction: column;
   }
+
   &__pagination {
     display: flex;
     column-gap: 6px;
@@ -174,12 +170,14 @@ function onSwiper(swiper) {
       border-radius: 1px;
       opacity: 0.3;
       background: #40a9ff;
+
       &.slider__pagination-bullet-active {
         opacity: 1;
         width: 24px;
       }
     }
   }
+
   &__fraction {
     color: var(--gray);
     @include adaptiv-font(12, 10);
