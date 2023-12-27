@@ -2,8 +2,6 @@
   <section class="feed">
     <div class="feed__wrapper">
       <div class="feed__body">
-        <ThePreview :urlImg="previewData.url" :open="previewData.open" @close="previewData.open = false"
-          :img="previewData.img" />
         <TheMasonry :items="items" :columns="4" :columns-width="260" :gap="20" class="feed__list">
           <template #default="{ item }">
             <article class="feed__post post">
@@ -58,15 +56,8 @@
 import { ref } from "vue";
 import TheMasonry from "@/components/ui/TheMasonry.vue";
 import { LikeOutlined, MessageOutlined } from "@ant-design/icons-vue";
-import ThePreview from "@/components/ui/ThePreview.vue";
 
-const previewData = ref({
-  url: "",
-  img: null,
-  open: false,
-});
-
-const items = [
+const items = ref([
   {
     title: "test 1",
     comments: 314,
@@ -187,13 +178,9 @@ const items = [
     date: new Date("2023-11-16"),
     url: "https://res.cloudinary.com/dk0jh3jqa/image/upload/v1702295238/Runliq/rage_mmcnyp.jpg",
   },
-];
+])
 
-function preview(event) {
-  previewData.value.open = true;
-  previewData.value.img = event.target;
-  previewData.value.url = event.target.src;
-}
+
 </script>
 
 

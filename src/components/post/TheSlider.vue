@@ -2,18 +2,9 @@
   <div class="slider">
     <div class="slider__wrapper">
       <div class="slider__body">
-        <Preview
-          :urlImg="previewData.url"
-          :open="previewData.open"
-          @close="previewData.open = false"
-          :img="previewData.img"
-        />
+        <ThePreview />
         <div class="slider__swiper-body">
-          <a-dropdown
-            :trigger="['click']"
-            placement="bottomRight"
-            class="slider__menu"
-          >
+          <a-dropdown :trigger="['click']" placement="bottomRight" class="slider__menu">
             <a class="slider__menu-button" @click.prevent>
               <span></span>
               <span></span>
@@ -30,41 +21,23 @@
               </a-menu>
             </template>
           </a-dropdown>
-          <swiper
-            :loop="true"
-            :grabCursor="true"
-            class="slider__swiper post"
-            @swiper="onSwiper"
-            v-if="data.length"
-          >
+          <swiper :loop="true" :grabCursor="true" class="slider__swiper post" @swiper="onSwiper" v-if="data.length">
             <span class="slider__prev" @click="swiperSlider.slidePrev()">
               <LeftOutlined />
             </span>
             <span class="slider__next" @click="swiperSlider.slideNext()">
               <RightOutlined />
             </span>
-            <swiper-slide
-              v-for="slide in data"
-              :key="slide"
-              class="slider__slide"
-            >
+            <swiper-slide v-for="slide in data" :key="slide" class="slider__slide">
               <img :src="slide" alt="" @click="preview" />
             </swiper-slide>
           </swiper>
-          <div
-            class="slider__paginations"
-            v-if="swiperSlider.slides && swiperSlider.slides.length"
-          >
+          <div class="slider__paginations" v-if="swiperSlider.slides && swiperSlider.slides.length">
             <div class="slider__pagination">
-              <span
-                class="slider__pagination-bullet"
-                v-for="bullet in swiperSlider.slides.length"
-                :key="bullet"
-                :class="{
-                  'slider__pagination-bullet-active':
-                    bullet == swiperSlider.realIndex + 1,
-                }"
-              ></span>
+              <span class="slider__pagination-bullet" v-for="bullet in swiperSlider.slides.length" :key="bullet" :class="{
+                'slider__pagination-bullet-active':
+                  bullet == swiperSlider.realIndex + 1,
+              }"></span>
             </div>
           </div>
 
@@ -92,24 +65,20 @@ import {
   LikeFilled,
 } from "@ant-design/icons-vue";
 import "swiper/css";
-import Preview from "@/components/ui/ThePreview.vue";
+import ThePreview from "@/components/ui/ThePreview.vue";
+import { usePreviewStore } from "@/stores/preview";
 
 defineProps(["data"]);
+
+const previewStore = usePreviewStore();
 
 let swiperSlider = ref({
   slides: [],
 });
 
-const previewData = ref({
-  url: "",
-  open: false,
-  img: null,
-});
-
 function preview(event) {
-  previewData.value.url = event.target.src;
-  previewData.value.img = event.target;
-  previewData.value.open = true;
+  previewStore.src = event.target.src;
+  previewStore.open = true;
 }
 
 function onSwiper(swiper) {
@@ -120,11 +89,13 @@ function onSwiper(swiper) {
 <style lang="scss" scoped>
 .slider {
   width: 100%;
+
   // height: 100%;
   &__wrapper,
   &__body {
     height: 100%;
   }
+
   &__body {
     position: relative;
     display: flex;
@@ -138,6 +109,7 @@ function onSwiper(swiper) {
     flex-direction: column;
     max-width: 544px;
   }
+
   &__swiper {
     height: 100%;
     width: 100%;
@@ -145,9 +117,11 @@ function onSwiper(swiper) {
     // overflow-y: visible;
     // position: static;
   }
+
   .swiper-wrapper {
     align-items: center;
   }
+
   &__prev,
   &__next {
     display: flex;
@@ -159,26 +133,32 @@ function onSwiper(swiper) {
     @include adaptiv-font(36, 26);
 
     color: #40a9ff;
+
     @media (any-hover: hover) {
       cursor: pointer;
       transition: all 0.3s ease 0s;
+
       &:hover {
         background: rgba(217, 217, 217, 0.2);
         color: $colorBlue;
       }
     }
   }
+
   &__prev {
     left: 0;
   }
+
   &__next {
     right: 0;
   }
+
   &__slide {
     @include adaptiv-value(max-height, 860, 500, 1);
     display: flex;
     height: 100%;
     flex: 1 0 auto;
+
     img {
       width: 100%;
       height: 100%;
@@ -187,10 +167,12 @@ function onSwiper(swiper) {
       object-fit: cover;
     }
   }
+
   &__paginations {
     display: flex;
     flex-direction: column;
   }
+
   &__pagination {
     display: flex;
     column-gap: 6px;
@@ -206,12 +188,14 @@ function onSwiper(swiper) {
       border-radius: 1px;
       opacity: 0.3;
       background: #40a9ff;
+
       &.slider__pagination-bullet-active {
         opacity: 1;
         width: 24px;
       }
     }
   }
+
   &__menu-button {
     z-index: 20;
     position: absolute;
@@ -246,10 +230,12 @@ function onSwiper(swiper) {
       font-size: 18px;
     }
   }
+
   &__likes {
     @media (any-hover: hover) {
       cursor: pointer;
       transition: all 0.3s ease 0s;
+
       &:hover {
         color: $colorBlue;
       }

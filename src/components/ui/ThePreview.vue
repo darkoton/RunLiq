@@ -1,48 +1,35 @@
 <template>
   <div class="preview" :class="[classEl]">
-    <div class="preview__bg" @click="$emit('close')"></div>
+    <div class="preview__bg" @click="previewStore.open = false"></div>
     <div class="preview__actions">
-      <a :href="urlImg" download="">
+      <a :href="previewStore.src" download="">
         <DownloadOutlined />
       </a>
       <button>
-        <CloseOutlined @click="$emit('close')" />
+        <CloseOutlined @click="previewStore.open = false" />
       </button>
     </div>
 
     <div class="preview__img-body">
-      <img :src="urlImg" alt="" class="previews__img" />
+      <img :src="previewStore.src" alt="" class="previews__img" />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { defineProps, defineEmits, watch, ref } from "vue";
+import { watch, ref } from "vue";
 import { DownloadOutlined, CloseOutlined } from "@ant-design/icons-vue";
 import { useStore } from "@/stores/store";
+import { usePreviewStore } from "@/stores/preview";
 
 const store = useStore();
+const previewStore = usePreviewStore();
 
-const props = defineProps({
-  urlImg: {
-    type: String,
-    default: "",
-  },
-  open: {
-    type: Boolean,
-    default: false,
-  },
-  img: {
-    default: null,
-  },
-});
-
-defineEmits(["close"]);
 
 const classEl = ref("");
 
 watch(
-  () => props.open,
+  () => previewStore.open,
   (val) => {
     val ? open() : close();
   }
@@ -150,4 +137,5 @@ function open() {
   &.open-animation .preview__actions {
     opacity: 1;
   }
-}</style>
+}
+</style>

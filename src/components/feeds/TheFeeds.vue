@@ -2,8 +2,7 @@
   <section class="feed">
     <div class="feed__wrapper">
       <div class="feed__body">
-        <ThePreview :urlImg="previewData.url" :open="previewData.open" @close="previewData.open = false"
-          :img="previewData.img" />
+        <ThePreview />
 
         <h2 class="feed__title">
           {{ title }} <span>{{ subtitle }}</span>
@@ -43,7 +42,9 @@ import { ref, defineProps, onMounted } from "vue";
 import TheCard from "@/components/ui/TheCard.vue";
 import ThePreview from "@/components/ui/ThePreview.vue";
 import { usePostCreateStore } from "@/stores/create-post";
+import { usePreviewStore } from "@/stores/preview";
 
+const previewStore = usePreviewStore()
 const store = usePostCreateStore();
 const props = defineProps({
   title: {
@@ -92,20 +93,14 @@ const props = defineProps({
 
 const feedData = ref([])
 let offset = 0
-const previewData = ref({
-  url: "",
-  open: false,
-  img: null,
-});
 
 function preview(img) {
   if (props.type == "select") {
     return;
   }
 
-  previewData.value.url = img.src;
-  previewData.value.img = img;
-  previewData.value.open = true;
+  previewStore.src = img.src
+  previewStore.open = true;
 }
 
 function select(data) {

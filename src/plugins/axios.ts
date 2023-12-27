@@ -19,7 +19,7 @@ export default {
     getAllPosts: async (offset:number = 0) => {
       // retrieve a nested property in `options`
       // using `key` as the path
-      return await axios.get(process.env.VUE_APP_BACKEND_URL +`posts?limit=12&offset=0=${offset}`, {
+      return await axios.get(process.env.VUE_APP_BACKEND_URL +`posts?limit=12&offset=${offset}`, {
         headers:{
           Authorization: "Bearer " + localStorage.authToken
         }

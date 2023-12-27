@@ -1,9 +1,9 @@
 import { defineStore } from 'pinia'
 
-export const usePreview = defineStore('preview img store', {
+export const usePreviewStore = defineStore('preview img store', {
   state: () => {
     return {
-      url: "",
+      src: "",
       img: null,
       open: false,
     }
